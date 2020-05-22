@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "tsumu-3eb2a"
+  },
+  "targets": {
+    "tsumu-3eb2a": {
+      "hosting": {
+        "tsumu": [
+          "tsumu-3eb2a"
+        ]
+      }
+    }
   }
 }
