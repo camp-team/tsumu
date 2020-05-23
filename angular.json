@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "tsumu"
+    }
+  },
+  "defaultProject": "tsumu",
+  "cli": {
+    "analytics": "b4678e42-8254-47df-8b24-e7b61610adef"
+  }
 }
