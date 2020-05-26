@@ -10,6 +10,7 @@ export class AuthService {
 
   login() {
     const provider = new auth.TwitterAuthProvider();
+    provider.setCustomParameters({ prompt: 'select_account' });
     this.afAuth.signInWithRedirect(provider);
   }
 
