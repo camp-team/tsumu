@@ -10,3 +10,7 @@ export const createUser = functions.auth.user().onCreate((afUser) => {
     createdAt: new Date(),
   });
 });
+
+export const deleteUser = functions.auth.user().onDelete((afUser) => {
+  return db.doc(`users/${afUser.uid}`).delete();
+});

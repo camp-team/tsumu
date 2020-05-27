@@ -8,7 +8,12 @@
     </a>
     <span class="spacer"></span>
     <div *ngIf="user$ | async as user; else loginArea">
-      <button class="button" mat-raised-button color="primary">
+      <button
+        class="button"
+        mat-raised-button
+        color="primary"
+        (click)="logout()"
+      >
         ログアウト
       </button>
       <button
