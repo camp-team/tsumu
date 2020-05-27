@@ -1,10 +1,20 @@
-.menu {
-  margin-top: 6px;
+a {
+  text-decoration: none;
+}
+.header {
+  background: #fff;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+.spacer {
+  flex: 1;
 }
 .logo {
   margin-left: 24px;
 }
-a {
-  text-decoration: none;
-  color: #fff;
+.button {
+  margin-right: 24px;
 }
