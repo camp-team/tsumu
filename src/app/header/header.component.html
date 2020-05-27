@@ -7,7 +7,7 @@
       <p>TSUMU</p>
     </a>
     <span class="spacer"></span>
-    <div *ngIf="user$ | async as user; else login">
+    <div *ngIf="user$ | async as user; else loginArea">
       <button class="button" mat-raised-button color="primary">
         ログアウト
       </button>
@@ -16,7 +16,7 @@
         [style.background-image]="'url(' + user.avatorURL + ')'"
       ></button>
     </div>
-    <ng-template #login>
+    <ng-template #loginArea>
       <button
         class="button"
         mat-raised-button
