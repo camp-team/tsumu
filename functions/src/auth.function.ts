@@ -8,8 +8,7 @@ admin.initializeApp(functions.config().firebase);
 export const createUser = functions.auth.user().onCreate((afUser) => {
   return db.doc(`users/${afUser.uid}`).set({
     name: afUser.displayName,
-    photoURL: afUser.photoURL,
-    email: afUser.email,
+    avatorURL: afUser.photoURL,
     createdAt: new Date(),
   });
 });

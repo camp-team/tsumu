@@ -1,10 +1,30 @@
-<mat-toolbar color="primary">
-  <mat-toolbar-row class="toolbar">
+<mat-toolbar class="header">
+  <mat-toolbar-row>
     <button mat-icon-button (click)="toggle()">
       <mat-icon>menu</mat-icon>
     </button>
     <a routerLink="/" class="logo">
       <p>TSUMU</p>
     </a>
+    <span class="spacer"></span>
+    <div *ngIf="user$ | async as user; else login">
+      <button class="button" mat-raised-button color="primary">
+        ログアウト
+      </button>
+      <button
+        class="avator"
+        [style.background-image]="'url(' + user.avatorURL + ')'"
+      ></button>
+    </div>
+    <ng-template #login>
+      <button
+        class="button"
+        mat-raised-button
+        color="primary"
+        (click)="login()"
+      >
+        ログイン
+      </button>
+    </ng-template>
   </mat-toolbar-row>
 </mat-toolbar>
