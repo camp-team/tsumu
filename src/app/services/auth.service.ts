@@ -13,16 +13,9 @@ export class AuthService {
   user$: Observable<User> = this.afAuth.user.pipe(
     switchMap((afUser) => {
       if (afUser) {
-        this.db.doc<User>(`users/${afUser.uid}`).valueChanges();
+        return this.db.doc<User>(`users/${afUser.uid}`).valueChanges();
       } else {
         return of(null);
-      }
-    }),
-    tap((user) => {
-      if (user) {
-        console.log(user);
-      } else {
-        console.log('なし');
       }
     })
   );

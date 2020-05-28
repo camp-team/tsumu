@@ -3,6 +3,4 @@ import * as admin from 'firebase-admin';
 
 admin.initializeApp(functions.config().firebase);
 
-export const db = admin.firestore();
-
 export * from './auth.function';
