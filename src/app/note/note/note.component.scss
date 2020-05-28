@@ -1,0 +1,18 @@
+.container {
+  margin: 72px 24px 0;
+  text-align: center;
+}
+.form {
+  display: block;
+  width: 100%;
+  &__title {
+    display: block;
+    padding-bottom: 12px;
+  }
+  &__area {
+    width: 100%;
+  }
+}
+.button {
+  margin-bottom: 12px;
+}
