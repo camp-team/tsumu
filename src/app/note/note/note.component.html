@@ -1,1 +1,52 @@
-<p>note works!</p>
+<div class="container">
+  <form [formGroup]="form" (ngSubmit)="postText()">
+    <div class="form">
+      <p>今日やること</p>
+      <mat-form-field appearance="outline">
+        <textarea
+          class="form__area"
+          placeholder="今日やることを書き出してみましょう！"
+          formControlName="todo"
+          matInput
+          autocomplete="off"
+          required
+        >
+          <mat-label>todo</mat-label>
+        </textarea>
+      </mat-form-field>
+    </div>
+
+    <div class="form">
+      <p>やったこと</p>
+      <mat-form-field appearance="outline">
+        <textarea
+          class="form__area"
+          placeholder="今日やったことは何ですか？"
+          formControlName="log"
+          matInput
+          autocomplete="off"
+          required
+        >
+          <mat-label>log</mat-label>
+        </textarea>
+      </mat-form-field>
+    </div>
+
+    <div class="form">
+      <p>今日のつみあげ</p>
+      <mat-form-field appearance="outline">
+        <textarea
+          class="form__area"
+          placeholder="今日の学びで気づいたこと、感じたことをメモしましょう！"
+          formControlName="done"
+          matInput
+          autocomplete="off"
+          required
+        >
+          <mat-label>done</mat-label>
+        </textarea>
+      </mat-form-field>
+    </div>
+    <button class="button" mat-flat-button color="primary">完了！</button>
+  </form>
+</div>

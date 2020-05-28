@@ -1,0 +1,14 @@
+.container {
+  margin: 64px 24px 0;
+  text-align: center;
+}
+.form {
+  display: block;
+  &__.area {
+    display: block;
+    width: 100%;
+  }
+}
+.button {
+  margin-bottom: 12px;
+}
