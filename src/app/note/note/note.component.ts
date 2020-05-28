@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
+import { PostService } from 'src/app/services/post.service';
 
 @Component({
   selector: 'app-note',
@@ -13,7 +15,15 @@ export class NoteComponent implements OnInit {
     log: ['', [Validators.required, Validators.maxLength(1000)]],
   });
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private postService: PostService
+  ) {}
 
   ngOnInit(): void {}
+
+  postNote() {
+    this.postService.postNote();
+  }
 }
