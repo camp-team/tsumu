@@ -10,11 +10,14 @@ import { AngularFirestore } from '@angular/fire/firestore';
   providedIn: 'root',
 })
 export class AuthService {
-  // uid$: Observable<string> = this.afAuth.user.pipe(
-  //   map(user => {
-  //     return user.uid;
-  //   })
-  // );
+  uid$: Observable<string> = this.afAuth.user.pipe(
+    map(user => {
+      return user.uid;
+    }),
+    tap(uid => {
+      return console.log(uid);
+    })
+  );
   user$: Observable<User> = this.afAuth.user.pipe(
     switchMap((afUser) => {
       if (afUser) {

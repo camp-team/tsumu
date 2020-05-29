@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormControl } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { PostService } from 'src/app/services/post.service';
-import { Note } from '../interfaces/note';
 
 @Component({
   selector: 'app-note',
@@ -28,7 +27,7 @@ export class NoteComponent implements OnInit {
     return this.form.get('log') as FormControl;
   }
 
-  user$ = this.authService.user$.subscribe();
+  uid$ = this.authService.uid$.subscribe();
 
 
   constructor(
@@ -40,6 +39,9 @@ export class NoteComponent implements OnInit {
   ngOnInit(): void { }
 
   postNote() {
-    this.postService.postNote(note: Note);
+    this.postService.postNote({
+      text: this.form.value,
+      authorId: this.uid$,
+    });
   }
 }
