@@ -1,8 +1,8 @@
 import { firestore } from 'firebase';
-import { Subscription } from 'rxjs';
 
 export interface Note {
   id: string;
+  text: string;
   authorId: string;
   createdAt: firestore.Timestamp;
 }

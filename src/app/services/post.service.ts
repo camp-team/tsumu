@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Subscription } from 'rxjs';
 import { Note } from '../interfaces/note';
 import { firestore, User } from 'firebase';
 
@@ -10,11 +9,12 @@ import { firestore, User } from 'firebase';
 export class PostService {
   constructor(private db: AngularFirestore) { }
 
-  postNote(user: User) {
+  postNote(note: Note) {
     const id = this.db.createId();
     this.db.doc<Note>(`notes/${id}`).set({
       id,
-      authorId: user.uid,
+      text:
+        authorId:
       createdAt: firestore.Timestamp.now(),
     });
   }
