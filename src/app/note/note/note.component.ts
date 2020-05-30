@@ -27,7 +27,7 @@ export class NoteComponent implements OnInit {
     return this.form.get('log') as FormControl;
   }
 
-  uid$ = this.authService.uid$.subscribe();
+  uid = this.authService.uid;
 
 
   constructor(
@@ -41,7 +41,7 @@ export class NoteComponent implements OnInit {
   postNote() {
     this.postService.postNote({
       text: this.form.value,
-      authorId: this.uid$,
+      authorId: this.uid,
     });
   }
 }
