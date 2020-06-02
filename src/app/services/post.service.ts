@@ -1,14 +1,20 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { AuthService } from './auth.service';
+import { Note } from '../interfaces/note';
+import { firestore } from 'firebase';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PostService {
-  constructor(private db: AngularFirestore, private authService: AuthService) {}
+  constructor(private db: AngularFirestore) { }
 
-  postNote() {
-    console.log('test');
+  postNote(note: Omit<Note, 'id' | 'createdAt'>): Promise<void> {
+    const id = this.db.createId();
+    return this.db.doc<Note>(`notes/${id}`).set({
+      id,
+      ...note,
+      createdAt: firestore.Timestamp.now()
+    });
   }
 }

@@ -27,15 +27,21 @@ export class NoteComponent implements OnInit {
     return this.form.get('log') as FormControl;
   }
 
+  uid = this.authService.uid;
+
+
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
     private postService: PostService
-  ) {}
+  ) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   postNote() {
-    this.postService.postNote();
+    this.postService.postNote({
+      text: this.form.value,
+      authorId: this.uid,
+    });
   }
 }
