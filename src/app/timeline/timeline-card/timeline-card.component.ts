@@ -15,7 +15,6 @@ export class TimelineCardComponent implements OnInit {
   user$: Observable<User> = this.authService.user$;
 
   constructor(private authService: AuthService) {
-    // console.log(this.note, 'noteの中身');
   }
 
   ngOnInit(): void {
