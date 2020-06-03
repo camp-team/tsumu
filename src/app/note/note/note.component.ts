@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormControl } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
-import { PostService } from 'src/app/services/post.service';
+import { NoteService } from 'src/app/services/note.service';
 
 @Component({
   selector: 'app-note',
@@ -33,13 +33,13 @@ export class NoteComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private postService: PostService
+    private noteService: NoteService
   ) { }
 
   ngOnInit(): void { }
 
   postNote() {
-    this.postService.postNote({
+    this.noteService.postNote({
       text: this.form.value,
       authorId: this.uid,
     });
