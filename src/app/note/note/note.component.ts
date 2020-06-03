@@ -36,11 +36,14 @@ export class NoteComponent implements OnInit {
     private noteService: NoteService
   ) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+  }
 
   postNote() {
     this.noteService.postNote({
-      text: this.form.value,
+      todo: this.form.value.todo,
+      done: this.form.value.done,
+      log: this.form.value.log,
       authorId: this.uid,
     });
   }
