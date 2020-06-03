@@ -35,4 +35,8 @@ export class NoteService {
       .collection<Note>('notes', ref => ref.orderBy('createdAt', 'desc'))
       .valueChanges();
   }
+
+  getNote(id: string): Observable<Note> {
+    return this.db.doc<Note>(`notes/${id}`).valueChanges();
+  }
 }

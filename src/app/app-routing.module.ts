@@ -21,6 +21,11 @@ const routes: Routes = [
       import('./timeline/timeline.module').then((m) => m.TimelineModule),
   },
   {
+    path: 'content/:id',
+    loadChildren: () =>
+      import('./content/content.module').then((m) => m.ContentModule),
+  },
+  {
     path: 'serch',
     loadChildren: () =>
       import('./serch/serch.module').then((m) => m.SerchModule),
