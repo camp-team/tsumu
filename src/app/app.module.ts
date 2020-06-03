@@ -21,6 +21,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 import { DrawerComponent } from './drawer/drawer.component';
 
 @NgModule({
@@ -45,8 +47,9 @@ import { DrawerComponent } from './drawer/drawer.component';
     MatIconModule,
     MatButtonModule,
     MatListModule,
+    MatSnackBarModule,
   ],
   providers: [{ provide: REGION, useValue: 'asia-northeast1' }],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
