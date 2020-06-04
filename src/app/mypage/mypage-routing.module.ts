@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { MyapgeComponent } from './myapge/myapge.component';
+import { mypageComponent } from './mypage/mypage.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: MyapgeComponent,
+    component: mypageComponent,
   },
 ];
 
@@ -13,4 +13,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class MypageRoutingModule {}
+export class MypageRoutingModule { }
