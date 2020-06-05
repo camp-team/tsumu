@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="grid" *ngIf="user$ | async as user">
+    <div *ngFor="let myNote of myNotes$ | async">
+      <a routerLink="/content/{{ myNote.id }}">
+        <mat-card>
+          <div class="note">
+            <div class="note__header">
+              <div mat-card-avatar class="note__avatar" mat-mini-fab
+                [style.background-image]="'url(' + user.avatorURL + ')'">
+              </div>
+              <div class="note__items">
+                <p>{{ user.name }}のつみあげ</p>
+                <p>{{ myNote.createdAt.toDate() | date: "MM月 dd日" }}</p>
+              </div>
+            </div>
+            <div class="note__body">
+              <p>{{ myNote.todo }}</p>
+            </div>
+          </div>
+        </mat-card>
+      </a>
+    </div>
+  </div>
+</div>

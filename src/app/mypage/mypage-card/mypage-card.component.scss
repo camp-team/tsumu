@@ -1,0 +1,29 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 24px;
+  margin-top: 24px;
+}
+mat-card {
+  padding: 8px;
+}
+.note {
+  background: rgba(blue, 0.05);
+  padding: 12px;
+  &__header {
+    display: flex;
+    text-align: center;
+  }
+  &__avatar {
+    background: center / cover;
+    border-radius: 50%;
+    box-shadow: none;
+  }
+  &__items p {
+    color: rgba(black, .6);
+    margin:0 0 0 16px;
+  }
+  &__body p {
+    font-weight: 500;
+  }
+}
