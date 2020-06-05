@@ -39,4 +39,10 @@ export class NoteService {
   getNote(id: string): Observable<Note> {
     return this.db.doc<Note>(`notes/${id}`).valueChanges();
   }
+
+  getMyNotes(uid: string): Observable<Note[]> {
+    return this.db.collection<Note>('notes', ref =>
+      ref.where('authorId', '==', uid))
+      .valueChanges();
+  }
 }

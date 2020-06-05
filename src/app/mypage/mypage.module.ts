@@ -2,14 +2,17 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { MypageRoutingModule } from './mypage-routing.module';
-import { MyapgeComponent } from './myapge/myapge.component';
+import { MypageComponent } from './mypage/mypage.component';
+import { MypageCardComponent } from './mypage-card/mypage-card.component';
 
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-  declarations: [MyapgeComponent],
+  declarations: [MypageComponent, MypageCardComponent],
   imports: [
     CommonModule,
-    MypageRoutingModule
+    MypageRoutingModule,
+    SharedModule,
   ]
 })
 export class MypageModule { }

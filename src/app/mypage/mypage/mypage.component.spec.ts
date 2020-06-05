@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MyapgeComponent } from './myapge.component';
+import { mypageComponent } from './mypage.component';
 
-describe('MyapgeComponent', () => {
-  let component: MyapgeComponent;
-  let fixture: ComponentFixture<MyapgeComponent>;
+describe('mypageComponent', () => {
+  let component: mypageComponent;
+  let fixture: ComponentFixture<mypageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MyapgeComponent ]
+      declarations: [mypageComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MyapgeComponent);
+    fixture = TestBed.createComponent(mypageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

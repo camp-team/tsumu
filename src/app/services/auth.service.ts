@@ -10,20 +10,20 @@ import { AngularFirestore } from '@angular/fire/firestore';
   providedIn: 'root',
 })
 export class AuthService {
+  user$: Observable<User>;
   uid: string;
-  user$: Observable<User> = this.afAuth.authState.pipe(
-    switchMap((afUser) => {
-      if (afUser) {
-        this.uid = afUser.uid;
-        return this.db.doc<User>(`users/${afUser.uid}`).valueChanges();
-      } else {
-        return of(null);
-      }
-    })
-  );
 
   constructor(private afAuth: AngularFireAuth, private db: AngularFirestore) {
-
+    this.user$ = this.afAuth.authState.pipe(
+      switchMap((afUser) => {
+        if (afUser) {
+          this.uid = afUser.uid;
+          return this.db.doc<User>(`users/${afUser.uid}`).valueChanges();
+        } else {
+          return of(null);
+        }
+      })
+    );
   }
 
   login() {
