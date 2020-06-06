@@ -1,0 +1,8 @@
+<div class="container" *ngIf="user$ | async as user">
+  <mat-card>
+    <div class="content">
+      <p>{{ user.name }}</p>
+      <div class="content__avatar" mat-card-avatar [style.background-image]="'url(' + user.avatorURL +')'"></div>
+    </div>
+  </mat-card>
+</div>
