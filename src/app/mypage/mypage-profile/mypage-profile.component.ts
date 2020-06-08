@@ -19,8 +19,10 @@ export class MypageProfileComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  editProfile() {
-    this.dialog.open(ProfileEditComponent);
+  openDialog() {
+    this.dialog.open(ProfileEditComponent, {
+      restoreFocus: false
+    });
   }
 
 }

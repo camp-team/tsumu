@@ -1,0 +1,57 @@
+<h1 matDialogTitle>プロフィールの編集</h1>
+
+<mat-dialog-content>
+  <form [formGroup]="form" (ngSubmit)="saveEdit()">
+    <div class="body">
+      <mat-form-field appearance="fill">
+        <textarea MatFormFieldControl MatInput placeholder="自己紹介" formControlName="bio" autocomplete="off" required
+          matTextareaAutosize [matAutosizeMinRows]="3">
+      </textarea>
+        <mat-chip-list #chipList aria-label="Fruit selection">
+          <mat-chip *ngFor="let target of targets" [selectable]="selectable" [removable]="removable"
+            (removed)="remove(target)">
+            {{target.genre}}
+            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+          </mat-chip>
+          <input formControlName="tag" placeholder="学習するジャンル" [matChipInputFor]="chipList"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
+            (matChipInputTokenEnd)="add($event)">
+        </mat-chip-list>
+      </mat-form-field>
+    </div>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button matDialogClose>キャンセル</button>
+  <button mat-button color="primary" type="submit">保存</button>
+</mat-dialog-actions>
+
+
+
+
+<!-- <form [formGroup]="form">
+  <div class="edit">
+    <div class="header">
+      <h2 class="header__title">プロフィールの編集</h2>
+      <button mat-flat-button color="primary" type="submit">保存</button>
+    </div>
+    <div class="body">
+      <mat-form-field appearance="fill">
+        <textarea MatFormFieldControl MatInput placeholder="自己紹介" formControlName="bio" autocomplete="off" required
+          matTextareaAutosize [matAutosizeMinRows]="3">
+        </textarea>
+      </mat-form-field>
+    </div>
+  </div>
+</form>
+<mat-chip-list #chipList aria-label="Fruit selection">
+  <mat-chip *ngFor="let target of targets" [selectable]="selectable" [removable]="removable"
+    (removed)="remove(target)">
+    {{target.genre}}
+    <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+  </mat-chip>
+  <input placeholder="学習するジャンル" [matChipInputFor]="chipList"
+    [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
+    (matChipInputTokenEnd)="add($event)">
+</mat-chip-list> -->
