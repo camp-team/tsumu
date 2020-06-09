@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators, FormControl } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { Target } from 'src/app/interfaces/target';
@@ -26,10 +26,6 @@ export class ProfileEditComponent implements OnInit {
     bio: ['', [Validators.required, Validators.maxLength(160)]],
     tag: ['', Validators.required]
   });
-
-  get bioControl() {
-    return this.form.get('bio') as FormControl;
-  }
 
   constructor(private fb: FormBuilder, private userServoce: UserService) { }
 

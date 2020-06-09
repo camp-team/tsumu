@@ -17,7 +17,7 @@
             {{target.genre}}
             <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
           </mat-chip>
-          <input matInput placeholder="学習のジャンル" [matChipInputFor]="chipList"
+          <input matInput formControlName="tag" placeholder="学習のジャンル" [matChipInputFor]="chipList"
             [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
             (matChipInputTokenEnd)="add($event)">
         </mat-chip-list>
