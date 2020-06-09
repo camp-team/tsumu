@@ -21,6 +21,9 @@ export class MypageProfileComponent implements OnInit {
 
   openDialog() {
     this.dialog.open(ProfileEditComponent, {
+      height: '720px',
+      width: '640px',
+      autoFocus: false,
       restoreFocus: false
     });
   }

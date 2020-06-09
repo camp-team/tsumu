@@ -1,57 +1,47 @@
-<h1 matDialogTitle>プロフィールの編集</h1>
+<div class="edit-container">
+  <h1 matDialogTitle>プロフィールの編集</h1>
 
-<mat-dialog-content>
-  <form [formGroup]="form" (ngSubmit)="saveEdit()">
-    <div class="body">
-      <mat-form-field appearance="fill">
-        <textarea MatFormFieldControl MatInput placeholder="自己紹介" formControlName="bio" autocomplete="off" required
-          matTextareaAutosize [matAutosizeMinRows]="3">
-      </textarea>
+  <mat-dialog-content>
+    <form [formGroup]="form" (ngSubmit)="saveEdit()">
+      <mat-form-field appearance="fill" class="main">
+        <div class="textarea">
+          <textarea MatInput formControlName="bio" placeholder="自己紹介" autocomplete="off" required matTextareaAutosize
+            [matAutosizeMinRows]="3">
+          </textarea>
+        </div>
+      </mat-form-field>
+      <mat-form-field class="example-chip-list">
         <mat-chip-list #chipList aria-label="Fruit selection">
           <mat-chip *ngFor="let target of targets" [selectable]="selectable" [removable]="removable"
             (removed)="remove(target)">
             {{target.genre}}
             <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
           </mat-chip>
-          <input formControlName="tag" placeholder="学習するジャンル" [matChipInputFor]="chipList"
+          <input matInput placeholder="学習のジャンル" [matChipInputFor]="chipList"
             [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
             (matChipInputTokenEnd)="add($event)">
         </mat-chip-list>
       </mat-form-field>
+    </form>
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button mat-button matDialogClose>キャンセル</button>
+    <button mat-button color="primary" type="submit">保存</button>
+  </mat-dialog-actions>
+</div>
+<!--
+<mat-form-field class="chip-list">
+  <mat-chip-list #chipList>
+    <mat-chip *ngFor="let target of targets" [selectable]="selectable" [removable]="removable"
+      (removed)="remove(target)">
+      {{target.genre}}
+      <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+    </mat-chip>
+    <div class="chips">
+      <input MatInput formControlName="tag" placeholder="学習するジャンル" [matChipInputFor]="chipList"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
+        (matChipInputTokenEnd)="add($event)">
     </div>
-  </form>
-</mat-dialog-content>
-
-<mat-dialog-actions>
-  <button mat-button matDialogClose>キャンセル</button>
-  <button mat-button color="primary" type="submit">保存</button>
-</mat-dialog-actions>
-
-
-
-
-<!-- <form [formGroup]="form">
-  <div class="edit">
-    <div class="header">
-      <h2 class="header__title">プロフィールの編集</h2>
-      <button mat-flat-button color="primary" type="submit">保存</button>
-    </div>
-    <div class="body">
-      <mat-form-field appearance="fill">
-        <textarea MatFormFieldControl MatInput placeholder="自己紹介" formControlName="bio" autocomplete="off" required
-          matTextareaAutosize [matAutosizeMinRows]="3">
-        </textarea>
-      </mat-form-field>
-    </div>
-  </div>
-</form>
-<mat-chip-list #chipList aria-label="Fruit selection">
-  <mat-chip *ngFor="let target of targets" [selectable]="selectable" [removable]="removable"
-    (removed)="remove(target)">
-    {{target.genre}}
-    <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-  </mat-chip>
-  <input placeholder="学習するジャンル" [matChipInputFor]="chipList"
-    [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
-    (matChipInputTokenEnd)="add($event)">
-</mat-chip-list> -->
+  </mat-chip-list>
+</mat-form-field> -->

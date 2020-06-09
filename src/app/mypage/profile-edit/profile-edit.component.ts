@@ -3,6 +3,7 @@ import { FormBuilder, Validators, FormControl } from '@angular/forms';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { Target } from 'src/app/interfaces/target';
+import { UserService } from 'src/app/services/user.service';
 
 
 @Component({
@@ -30,13 +31,17 @@ export class ProfileEditComponent implements OnInit {
     return this.form.get('bio') as FormControl;
   }
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private userServoce: UserService) { }
 
   ngOnInit(): void {
   }
 
   saveEdit() {
-
+    const bio = this.form.value.bio;
+    const tags = this.form.value.tag;
+    console.log(bio);
+    console.log(tags);
+    // this.userServoce.saveEdit(bio, tags);
   }
 
   add(event: MatChipInputEvent): void {

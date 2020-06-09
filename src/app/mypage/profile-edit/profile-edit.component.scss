@@ -1,13 +1,13 @@
-// .header {
-//   display: flex;
-//   text-align: center;
-//   height: 36px;
-//   &__title {
-//     padding: 0 12px;
-//     margin-top: 0;
-//   }
-// }
-// .body {
-//   margin-top: 16px;
-//   text-align: center;
-// }
+.edit-container {
+  text-align: center;
+}
+.main {
+  width: 600px;
+}
+.textarea {
+  margin-bottom: 24px;
+  text-align: center;
+  textarea {
+    width: 552px;
+  }
+}
