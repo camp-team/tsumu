@@ -1,32 +1,33 @@
 <div class="edit-container">
   <h1 matDialogTitle>プロフィールの編集</h1>
 
-  <mat-dialog-content>
-    <form [formGroup]="form" (ngSubmit)="saveEdit()">
+  <form [formGroup]="form" (ngSubmit)="saveEdit()">
+    <mat-dialog-content>
       <mat-form-field appearance="fill" class="main">
         <div class="textarea">
-          <textarea MatInput formControlName="bio" placeholder="自己紹介" autocomplete="off" required matTextareaAutosize
+          <textarea matInput formControlName="bio" placeholder="自己紹介" autocomplete="off" required matTextareaAutosize
             [matAutosizeMinRows]="3">
           </textarea>
         </div>
       </mat-form-field>
-      <mat-form-field class="example-chip-list">
-        <mat-chip-list #chipList aria-label="Fruit selection">
+      <mat-form-field class="chip-list">
+        <h2 matDialogTitle class="subtitle">学習のジャンル</h2>
+        <mat-chip-list #chipList>
           <mat-chip *ngFor="let target of targets" [selectable]="selectable" [removable]="removable"
             (removed)="remove(target)">
             {{target.genre}}
             <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
           </mat-chip>
-          <input matInput formControlName="tag" placeholder="学習のジャンル" [matChipInputFor]="chipList"
+          <input matInput formControlName="tag" [matChipInputFor]="chipList" autocomplete="off"
             [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
             (matChipInputTokenEnd)="add($event)">
         </mat-chip-list>
       </mat-form-field>
-    </form>
-  </mat-dialog-content>
+    </mat-dialog-content>
 
-  <mat-dialog-actions>
-    <button mat-button matDialogClose>キャンセル</button>
-    <button mat-button color="primary" type="submit">保存</button>
-  </mat-dialog-actions>
+    <mat-dialog-actions class="button">
+      <button mat-button matDialogClose>キャンセル</button>
+      <button mat-raised-button matDialogClose color="primary" type="submit">保存</button>
+    </mat-dialog-actions>
+  </form>
 </div>

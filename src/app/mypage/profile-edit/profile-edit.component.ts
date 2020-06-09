@@ -12,6 +12,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./profile-edit.component.scss']
 })
 export class ProfileEditComponent implements OnInit {
+  data = [];
   visible = true;
   selectable = true;
   removable = true;
@@ -24,7 +25,7 @@ export class ProfileEditComponent implements OnInit {
   ];
   form = this.fb.group({
     bio: ['', [Validators.required, Validators.maxLength(160)]],
-    tag: ['', Validators.required]
+    tag: ['']
   });
 
   constructor(private fb: FormBuilder, private userServoce: UserService) { }
@@ -33,11 +34,9 @@ export class ProfileEditComponent implements OnInit {
   }
 
   saveEdit() {
-    const bio = this.form.value.bio;
-    const tags = this.form.value.tag;
-    console.log(bio);
-    console.log(tags);
-    // this.userServoce.saveEdit(bio, tags);
+    const data = this.form.value.tag;
+    // const userTags = this.targets.push(this.form.value.tag);
+    return console.log(data);
   }
 
   add(event: MatChipInputEvent): void {
