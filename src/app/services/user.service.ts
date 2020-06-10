@@ -11,7 +11,7 @@ export class UserService {
 
   saveEdit(uid: string, targets: Target[]) {
     this.db.doc(`users/${uid}`).update({
-      tag: targets[0].genre
+      tag: targets[targets.length - 1].genre
     });
   }
 }

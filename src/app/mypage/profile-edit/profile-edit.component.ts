@@ -37,7 +37,7 @@ export class ProfileEditComponent implements OnInit {
 
   saveEdit() {
     const data = this.form.value.tag;
-    const userTags = {
+    const userTags: Target = {
       genre: data
     };
     this.targets.push(userTags);
