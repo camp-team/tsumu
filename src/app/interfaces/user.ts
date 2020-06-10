@@ -8,6 +8,6 @@ export interface User {
 }
 
 export interface UserWithTagsAndBio extends User {
-  tags: string;
+  tags: string[];
   bio: string;
 }

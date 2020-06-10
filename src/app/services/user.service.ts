@@ -12,7 +12,7 @@ export class UserService {
 
   saveEdit(uid: string, targets: string[], bio: string) {
     return this.db.doc<UserWithTagsAndBio>(`users/${uid}`).update({
-      tags: targets[targets.length - 1],
+      tags: targets,
       bio,
     });
   }

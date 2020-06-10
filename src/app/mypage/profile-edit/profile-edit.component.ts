@@ -26,7 +26,7 @@ export class ProfileEditComponent implements OnInit {
   uid = this.authService.uid;
   form = this.fb.group({
     bio: ['', [Validators.required, Validators.maxLength(160)]],
-    tag: ['']
+    tag: [['']]
   });
 
   constructor(private fb: FormBuilder, private userServoce: UserService, private authService: AuthService) { }
@@ -35,19 +35,15 @@ export class ProfileEditComponent implements OnInit {
   }
 
   saveEdit() {
-    const tag = this.form.value.tag;
-    this.targets.push(tag);
-
     const bio = this.form.value.bio;
-    console.log(bio);
-    // this.userServoce.saveEdit(this.uid, this.targets, bio);
+    this.userServoce.saveEdit(this.uid, this.targets, bio);
   }
 
   add(event: MatChipInputEvent): void {
     const input = event.input;
     const value = event.value;
 
-    // Add our fruit
+    // Add our targets
     if ((value || '').trim()) {
       this.targets.push(value.trim());
     }
