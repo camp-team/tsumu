@@ -36,12 +36,14 @@ export class ProfileEditComponent implements OnInit {
   }
 
   saveEdit() {
-    const data = this.form.value.tag;
+    const tag = this.form.value.tag;
     const userTags: Target = {
-      genre: data
+      genre: tag
     };
     this.targets.push(userTags);
-    this.userServoce.saveEdit(this.uid, this.targets);
+
+    const bio = this.form.value.bio;
+    this.userServoce.saveEdit(this.uid, this.targets, bio);
   }
 
   add(event: MatChipInputEvent): void {

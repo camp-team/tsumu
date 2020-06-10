@@ -6,12 +6,14 @@ import { Target } from '../interfaces/target';
   providedIn: 'root'
 })
 export class UserService {
+  bio: string;
 
   constructor(private db: AngularFirestore) { }
 
-  saveEdit(uid: string, targets: Target[]) {
+  saveEdit(uid: string, targets: Target[], bio: string) {
     this.db.doc(`users/${uid}`).update({
-      tag: targets[targets.length - 1].genre
+      tag: targets[targets.length - 1].genre,
+      bio,
     });
   }
 }
