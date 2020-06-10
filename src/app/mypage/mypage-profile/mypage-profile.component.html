@@ -9,11 +9,13 @@
         <span class="spacer"></span>
         <button class="content__button" mat-stroked-button color="primary" (click)="openDialog()">プロフィールを編集</button>
       </div>
-      <p class="content__bio">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, nobis dolor enim
-        reiciendis explicabo dolore
-        cumque, dolores temporibus nostrum eaque quidem sapiente, molestias voluptatem odio repellendus molestiae quis
-        accusantium beatae.
+      <p class="content__bio">
+        {{ bio }}
       </p>
+      <mat-chip-list aria-label="Gnere selection">
+        <mat-chip>Angular</mat-chip>
+        <mat-chip>Firebase</mat-chip>
+      </mat-chip-list>
     </div>
   </mat-card>
 </div>

@@ -39,7 +39,7 @@ export class ProfileEditComponent implements OnInit {
     this.targets.push(tag);
 
     const bio = this.form.value.bio;
-    console.log(this.targets);
+    console.log(bio);
     // this.userServoce.saveEdit(this.uid, this.targets, bio);
   }
 
