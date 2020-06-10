@@ -4,6 +4,7 @@ import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { Target } from 'src/app/interfaces/target';
 import { UserService } from 'src/app/services/user.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 @Component({
@@ -12,7 +13,6 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./profile-edit.component.scss']
 })
 export class ProfileEditComponent implements OnInit {
-  data = [];
   visible = true;
   selectable = true;
   removable = true;
@@ -23,20 +23,25 @@ export class ProfileEditComponent implements OnInit {
     { genre: 'React' },
     { genre: 'Vue' },
   ];
+
+  uid = this.authService.uid;
   form = this.fb.group({
     bio: ['', [Validators.required, Validators.maxLength(160)]],
     tag: ['']
   });
 
-  constructor(private fb: FormBuilder, private userServoce: UserService) { }
+  constructor(private fb: FormBuilder, private userServoce: UserService, private authService: AuthService) { }
 
   ngOnInit(): void {
   }
 
   saveEdit() {
     const data = this.form.value.tag;
-    // const userTags = this.targets.push(this.form.value.tag);
-    return console.log(data);
+    const userTags = {
+      genre: data
+    };
+    this.targets.push(userTags);
+    this.userServoce.saveEdit(this.uid, this.targets);
   }
 
   add(event: MatChipInputEvent): void {
