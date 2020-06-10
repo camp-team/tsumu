@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { User } from 'src/app/interfaces/user';
 import { MatDialog } from '@angular/material/dialog';
 import { ProfileEditComponent } from '../profile-edit/profile-edit.component';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-mypage-profile',
@@ -13,8 +14,9 @@ import { ProfileEditComponent } from '../profile-edit/profile-edit.component';
 export class MypageProfileComponent implements OnInit {
   uid: string = this.authService.uid;
   user$: Observable<User> = this.authService.user$;
+  bio = this.userService.bio;
 
-  constructor(private authService: AuthService, private dialog: MatDialog) { }
+  constructor(private authService: AuthService, private userService: UserService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
   }

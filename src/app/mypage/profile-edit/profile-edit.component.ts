@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material/chips';
-import { Target } from 'src/app/interfaces/target';
 import { UserService } from 'src/app/services/user.service';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -18,10 +17,10 @@ export class ProfileEditComponent implements OnInit {
   removable = true;
   addOnBlur = true;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
-  targets: Target[] = [
-    { genre: 'Angular' },
-    { genre: 'React' },
-    { genre: 'Vue' },
+  targets: string[] = [
+    'Angular',
+    'React',
+    'Vue'
   ];
 
   uid = this.authService.uid;
@@ -37,13 +36,11 @@ export class ProfileEditComponent implements OnInit {
 
   saveEdit() {
     const tag = this.form.value.tag;
-    const userTags: Target = {
-      genre: tag
-    };
-    this.targets.push(userTags);
+    this.targets.push(tag);
 
     const bio = this.form.value.bio;
-    this.userServoce.saveEdit(this.uid, this.targets, bio);
+    console.log(this.targets);
+    // this.userServoce.saveEdit(this.uid, this.targets, bio);
   }
 
   add(event: MatChipInputEvent): void {
@@ -52,7 +49,7 @@ export class ProfileEditComponent implements OnInit {
 
     // Add our fruit
     if ((value || '').trim()) {
-      this.targets.push({ genre: value.trim() });
+      this.targets.push(value.trim());
     }
 
     // Reset the input value
@@ -61,7 +58,7 @@ export class ProfileEditComponent implements OnInit {
     }
   }
 
-  remove(targets: Target): void {
+  remove(targets: string): void {
     const index = this.targets.indexOf(targets);
 
     if (index >= 0) {

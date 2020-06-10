@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Target } from '../interfaces/target';
+import { UserWithTagsAndBio } from '../interfaces/user';
 
 @Injectable({
   providedIn: 'root'
@@ -10,9 +10,9 @@ export class UserService {
 
   constructor(private db: AngularFirestore) { }
 
-  saveEdit(uid: string, targets: Target[], bio: string) {
-    this.db.doc(`users/${uid}`).update({
-      tag: targets[targets.length - 1].genre,
+  saveEdit(uid: string, targets: string[], bio: string) {
+    return this.db.doc<UserWithTagsAndBio>(`users/${uid}`).update({
+      tags: targets[targets.length - 1],
       bio,
     });
   }
