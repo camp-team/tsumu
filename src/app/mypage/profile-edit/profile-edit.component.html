@@ -1,0 +1,33 @@
+<div class="edit-container">
+  <h1 matDialogTitle>プロフィールの編集</h1>
+
+  <form [formGroup]="form" (ngSubmit)="saveProfile()">
+    <mat-dialog-content>
+      <mat-form-field appearance="fill" class="main">
+        <div class="textarea">
+          <textarea matInput formControlName="bio" placeholder="自己紹介" autocomplete="off" required matTextareaAutosize
+            [matAutosizeMinRows]="3">
+          </textarea>
+        </div>
+      </mat-form-field>
+      <mat-form-field class="chip-list">
+        <h2 matDialogTitle class="subtitle">学習のジャンル</h2>
+        <mat-chip-list #chipList>
+          <mat-chip *ngFor="let target of targets" [selectable]="selectable" [removable]="removable"
+            (removed)="remove(target)">
+            {{target}}
+            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+          </mat-chip>
+          <input matInput formControlName="tag" [matChipInputFor]="chipList" autocomplete="off"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
+            (matChipInputTokenEnd)="add($event)">
+        </mat-chip-list>
+      </mat-form-field>
+    </mat-dialog-content>
+
+    <mat-dialog-actions class="button">
+      <button mat-button matDialogClose>キャンセル</button>
+      <button mat-raised-button matDialogClose color="primary" type="submit">保存</button>
+    </mat-dialog-actions>
+  </form>
+</div>
