@@ -13,7 +13,12 @@
         {{ user.bio }}
       </p>
       <mat-chip-list aria-label="Gnere selection">
-        <mat-chip *ngFor="let tag of user.tags">{{ tag }}</mat-chip>
+        <mat-chip class="chips" *ngFor="let tag of user.tags">
+          <span>
+            <mat-icon fontSet="material-icons-outlined">local_offer</mat-icon>
+          </span>
+          {{ tag }}
+        </mat-chip>
       </mat-chip-list>
     </div>
   </mat-card>
