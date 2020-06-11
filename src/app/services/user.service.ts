@@ -13,7 +13,7 @@ export class UserService {
   constructor(private db: AngularFirestore, private afAuth: AngularFireAuth, private snackBar: MatSnackBar) {
   }
 
-  saveEdit(uid: string, targets: string[], bio: string) {
+  saveProfile(uid: string, targets: string[], bio: string) {
     return this.db.doc<User>(`users/${uid}`).update({
       tags: targets,
       bio,

@@ -29,14 +29,14 @@ export class ProfileEditComponent implements OnInit {
     tag: [['']]
   });
 
-  constructor(private fb: FormBuilder, private userServoce: UserService, private authService: AuthService) { }
+  constructor(private fb: FormBuilder, private userService: UserService, private authService: AuthService) { }
 
   ngOnInit(): void {
   }
 
-  saveEdit() {
+  saveProfile() {
     const bio = this.form.value.bio;
-    this.userServoce.saveEdit(this.uid, this.targets, bio);
+    this.userService.saveProfile(this.uid, this.targets, bio);
   }
 
   add(event: MatChipInputEvent): void {
