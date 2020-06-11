@@ -5,9 +5,6 @@ export interface User {
   name: string;
   avatorURL: string;
   createdAt: firestore.Timestamp;
-}
-
-export interface UserWithTagsAndBio extends User {
-  tags: string[];
-  bio: string;
+  tags?: string[];
+  bio?: string;
 }

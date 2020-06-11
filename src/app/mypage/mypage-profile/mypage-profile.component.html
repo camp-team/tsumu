@@ -10,12 +10,12 @@
         <button class="content__button" mat-stroked-button color="primary" (click)="openDialog()">プロフィールを編集</button>
       </div>
       <p class="content__bio">
-        {{ bio }}
+        {{ user.bio }}
       </p>
       <mat-chip-list aria-label="Gnere selection">
-        <mat-chip>Angular</mat-chip>
-        <mat-chip>Firebase</mat-chip>
+        <mat-chip *ngFor="let tag of user.tags">{{ tag }}</mat-chip>
       </mat-chip-list>
+      <!-- <pre>{{ user | json }}</pre> -->
     </div>
   </mat-card>
 </div>
