@@ -1,11 +1,9 @@
 <div class="mypage-container">
-  <mat-tab-group animationDuration="0ms" mat-align-tabs="center">
-    <mat-tab label="プロフィール">
-      <app-mypage-profile></app-mypage-profile>
-    </mat-tab>
-    <mat-tab label="つみあげ記録">
-      <app-mypage-card></app-mypage-card>
-    </mat-tab>
-    <mat-tab label="設定"></mat-tab>
-  </mat-tab-group>
+  <nav mat-tab-nav-bar mat-align-tabs="center">
+    <a mat-tab-link *ngFor="let link of navLinks" [routerLinkActiveOptions]="{exact: true}" [routerLink]="link.path"
+      routerLinkActive #rla="routerLinkActive" [active]="rla.isActive">
+      {{link.label}}
+    </a>
+  </nav>
+  <router-outlet></router-outlet>
 </div>
