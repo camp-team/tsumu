@@ -1,1 +1,22 @@
-<p>search works!</p>
+<div class="container">
+  <div class="wrap">
+    <form class="search">
+      <input class="search__input" type="text" matInput autocomplete="off" placeholder="ジャンルを入力してください">
+      <button class="search__button">
+        <mat-icon>search</mat-icon>
+      </button>
+    </form>
+  </div>
+
+  <div class="chips">
+    <mat-chip-list aria-label="Genre selection">
+      <mat-chip color="primary" selected>Angular</mat-chip>
+      <mat-chip color="primary" selected>Firebase</mat-chip>
+      <mat-chip color="primary" selected>typeScript</mat-chip>
+      <mat-chip color="primary" selected>React</mat-chip>
+      <mat-chip color="primary" selected>Vue</mat-chip>
+    </mat-chip-list>
+  </div>
+
+  <app-user-card></app-user-card>
+</div>
