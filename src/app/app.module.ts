@@ -22,6 +22,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatDividerModule } from '@angular/material/divider';
 
 import { DrawerComponent } from './drawer/drawer.component';
 
@@ -48,6 +50,8 @@ import { DrawerComponent } from './drawer/drawer.component';
     MatButtonModule,
     MatListModule,
     MatSnackBarModule,
+    MatMenuModule,
+    MatDividerModule,
   ],
   providers: [{ provide: REGION, useValue: 'asia-northeast1' }],
   bootstrap: [AppComponent],
