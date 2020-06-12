@@ -26,9 +26,9 @@ const routes: Routes = [
       import('./content/content.module').then((m) => m.ContentModule),
   },
   {
-    path: 'serch',
+    path: 'search',
     loadChildren: () =>
-      import('./serch/serch.module').then((m) => m.SerchModule),
+      import('./search/search.module').then((m) => m.SearchModule),
   },
   {
     path: 'mypage',
