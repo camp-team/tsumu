@@ -1,5 +1,5 @@
 import * as functions from 'firebase-functions';
-import { db } from './util';
+import { db } from './utils/util';
 
 export const createUser = functions.auth.user().onCreate((afUser) => {
   return db.doc(`users/${afUser.uid}`).set({
