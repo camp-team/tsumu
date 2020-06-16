@@ -8,27 +8,27 @@
     </a>
     <span class="spacer"></span>
     <div *ngIf="user$ | async as user; else loginArea">
-      <button
-        class="button"
-        mat-raised-button
-        color="primary"
-        (click)="logout()"
-      >
-        ログアウト
-      </button>
-      <button
-        class="avator"
-        mat-mini-fab
-        [style.background-image]="'url(' + user.avatorURL + ')'"
-      ></button>
+      <button class="avator" mat-mini-fab [matMenuTriggerFor]="menu"
+        [style.background-image]="'url(' + user.avatorURL + ')'"></button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="logout()">
+          <mat-icon>exit_to_app</mat-icon>
+          <span>ログアウト</span>
+        </button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item>
+          <mat-icon>account_circle</mat-icon>
+          <span>マイページ</span>
+        </button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item>
+          <mat-icon>settings</mat-icon>
+          <span>設定</span>
+        </button>
+      </mat-menu>
     </div>
     <ng-template #loginArea>
-      <button
-        class="button"
-        mat-raised-button
-        color="primary"
-        (click)="login()"
-      >
+      <button class="button" mat-raised-button color="primary" (click)="login()">
         ログイン
       </button>
     </ng-template>

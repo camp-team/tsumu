@@ -15,7 +15,7 @@ export class UserService {
 
   saveProfile(uid: string, targets: string[], bio: string) {
     return this.db.doc<User>(`users/${uid}`).update({
-      tags: targets,
+      genres: targets,
       bio,
     }).then(() => {
       this.snackBar.open('プロフィールを変更しました！', null, {

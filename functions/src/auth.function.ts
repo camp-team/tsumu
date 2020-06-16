@@ -1,7 +1,7 @@
 import * as functions from 'firebase-functions';
-import { db } from './util';
+import { db } from './utils/util';
 
-export const createUser = functions.auth.user().onCreate((afUser) => {
+export const createAdminUser = functions.auth.user().onCreate((afUser) => {
   return db.doc(`users/${afUser.uid}`).set({
     id: afUser.uid,
     name: afUser.displayName,
@@ -10,6 +10,6 @@ export const createUser = functions.auth.user().onCreate((afUser) => {
   });
 });
 
-export const deleteUser = functions.auth.user().onDelete((afUser) => {
+export const deleteAdminUser = functions.auth.user().onDelete((afUser) => {
   return db.doc(`users/${afUser.uid}`).delete();
 });

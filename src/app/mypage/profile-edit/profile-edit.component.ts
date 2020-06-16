@@ -26,7 +26,7 @@ export class ProfileEditComponent implements OnInit {
   uid = this.authService.uid;
   form = this.fb.group({
     bio: ['', [Validators.required, Validators.maxLength(160)]],
-    tag: [['']]
+    genres: [['']]
   });
 
   constructor(private fb: FormBuilder, private userService: UserService, private authService: AuthService) { }
