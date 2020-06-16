@@ -6,6 +6,8 @@ import { SearchComponent } from './search/search.component';
 import { SharedModule } from '../shared/shared.module';
 import { UserCardComponent } from './user-card/user-card.component';
 
+import { MatListModule } from '@angular/material/list';
+
 
 @NgModule({
   declarations: [SearchComponent, UserCardComponent],
@@ -13,6 +15,7 @@ import { UserCardComponent } from './user-card/user-card.component';
     CommonModule,
     SearchRoutingModule,
     SharedModule,
+    MatListModule,
   ]
 })
 export class SearchModule { }

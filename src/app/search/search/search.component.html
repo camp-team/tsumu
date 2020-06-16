@@ -6,15 +6,17 @@
     </button>
   </form>
 
-  <div class="chips">
-    <mat-chip-list aria-label="Genre selection">
-      <mat-chip color="primary" selected>Angular</mat-chip>
-      <mat-chip color="primary" selected>Firebase</mat-chip>
-      <mat-chip color="primary" selected>typeScript</mat-chip>
-      <mat-chip color="primary" selected>React</mat-chip>
-      <mat-chip color="primary" selected>Vue</mat-chip>
-    </mat-chip-list>
+  <div class="tag-list">
+    <mat-selection-list (selectionChange)="selectedTags($event)" dense>
+      <mat-list-option *ngFor="let tag of tags" [value]="tag.value">
+        {{ tag.value }}({{ tag.count }})
+      </mat-list-option>
+    </mat-selection-list>
   </div>
+
+  <ul>
+    <li *ngFor="let userItem of userItems">{{ userItem.name }}</li>
+  </ul>
 
   <app-user-card></app-user-card>
 </div>
