@@ -1,7 +1,8 @@
 <div class="container">
-  <form class="search">
-    <input class="search__input" type="text" matInput autocomplete="off" placeholder="ジャンルを入力してください">
-    <button class="search__button">
+  <form class="search" [formGroup]="form">
+    <input class="search__input" formControlName="inputTagFilter" type="text" matInput autocomplete="off"
+      placeholder="ジャンルを入力してください">
+    <button class="search__button" (click)="inputTag()">
       <mat-icon>search</mat-icon>
     </button>
   </form>

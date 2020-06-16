@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchService } from 'src/app/services/search.service';
 import { MatSelectionListChange } from '@angular/material/list';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-search',
@@ -15,8 +16,11 @@ export class SearchComponent implements OnInit {
     selected?: boolean;
   }[];
   userItems = [];
+  form = this.fb.group({
+    inputTagFilter: [''],
+  });
 
-  constructor(private searchService: SearchService) {
+  constructor(private searchService: SearchService, private fb: FormBuilder) {
     this.getFacets();
   }
 
@@ -42,11 +46,18 @@ export class SearchComponent implements OnInit {
       .then((result) => (this.userItems = result.hits));
   }
 
-
+  // チェックボックスで指定したfacetを取得し、searchに引数として渡す
   selectedTags(event: MatSelectionListChange) {
     const facetFilters = event.source.selectedOptions.selected.map(
       (item) => `genres:${item.value}`
     );
+    this.search(facetFilters);
+  }
+
+  // input欄で入力したデータを取得して、searchに引数として渡す
+  inputTag() {
+    const facetFilters = this.form.value.inputTagFilter;
+    // console.log(facetFilters);
     this.search(facetFilters);
   }
 
