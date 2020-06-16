@@ -5,6 +5,6 @@ export interface User {
   name: string;
   avatorURL: string;
   createdAt: firestore.Timestamp;
-  tags?: string[];
+  genres?: string[];
   bio?: string;
 }
