@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchService } from 'src/app/services/search.service';
 import { MatSelectionListChange } from '@angular/material/list';
-import { FormBuilder } from '@angular/forms';
+import { FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -16,24 +17,28 @@ export class SearchComponent implements OnInit {
     selected?: boolean;
   }[];
   userItems = [];
-  form = this.fb.group({
-    inputTagFilter: [''],
-  });
+  inputTagFilter: FormControl = new FormControl();
 
-  constructor(private searchService: SearchService, private fb: FormBuilder) {
-    this.getFacets();
+  constructor(private searchService: SearchService, private router: Router) {
+    this.getFacets('');
+    this.search();
   }
 
   ngOnInit(): void {
+    this.inputTagFilter.valueChanges.subscribe((facetQuery: string) => {
+      this.getFacets(facetQuery);
+      this.updateParams({
+        inputTagFilter: facetQuery || null
+      });
+    });
   }
 
   // タグの取得を行いプロパティに代入
-  getFacets(): void {
+  getFacets(inputTagFilter: string): void {
     this.searchService.index.users
-      .searchForFacetValues('genres', '')
+      .searchForFacetValues('genres', inputTagFilter)
       .then(result => {
         this.tags = result.facetHits;
-        // console.log(result.facetHits  , 'resultの中身');
       });
   }
 
@@ -46,19 +51,25 @@ export class SearchComponent implements OnInit {
       .then((result) => (this.userItems = result.hits));
   }
 
-  // チェックボックスで指定したfacetを取得し、searchに引数として渡す
-  selectedTags(event: MatSelectionListChange) {
+  // チェックボックスで指定したfacetを文字列として取得する
+  updateTags(event: MatSelectionListChange) {
     const facetFilters = event.source.selectedOptions.selected.map(
-      (item) => `genres:${item.value}`
+      item => item.value
     );
+    console.log(facetFilters);
     this.search(facetFilters);
+    this.updateParams({
+      tags: facetFilters.length ? facetFilters.join() : null,
+      page: 1
+    });
   }
 
-  // input欄で入力したデータを取得して、searchに引数として渡す
-  inputTag() {
-    const facetFilters = this.form.value.inputTagFilter;
-    // console.log(facetFilters);
-    this.search(facetFilters);
+  updateParams(params: object) {
+    this.router.navigate([], {
+      queryParamsHandling: 'merge',
+      queryParams: {
+        params
+      }
+    });
   }
-
 }
