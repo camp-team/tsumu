@@ -20,28 +20,19 @@ export class SearchComponent implements OnInit {
   inputTagFilter: FormControl = new FormControl();
 
   constructor(private searchService: SearchService, private router: Router) {
-    this.getFacets('');
+    this.buildTags('');
     this.search();
   }
 
   ngOnInit(): void {
+    // inputで入力した値をsubscribeで受け取り、メソッドの引数に渡す
     this.inputTagFilter.valueChanges.subscribe((facetQuery: string) => {
-      this.getFacets(facetQuery);
+      this.buildTags(facetQuery);
       this.updateParams({
-        inputTagFilter: facetQuery || null
+        text: facetQuery || null
       });
     });
   }
-
-  // タグの取得を行いプロパティに代入
-  getFacets(inputTagFilter: string): void {
-    this.searchService.index.users
-      .searchForFacetValues('genres', inputTagFilter)
-      .then(result => {
-        this.tags = result.facetHits;
-      });
-  }
-
   // 絞り込みの条件を文字列の配列で受け取り、usersの中からhitするfacetsを持つものを抽出しプロパティに代入
   search(facetFilters?: string[]): void {
     this.searchService.index.users
@@ -50,26 +41,32 @@ export class SearchComponent implements OnInit {
       })
       .then((result) => (this.userItems = result.hits));
   }
-
+  // paramsとして受け取った値を既存のURLの後ろにmergeする
+  updateParams(params: object) {
+    this.router.navigate([], {
+      queryParamsHandling: 'merge',
+      queryParams: {
+        ...params
+      }
+    });
+  }
+  // タグの取得を行いプロパティに代入
+  buildTags(inputTagFilter: string): void {
+    this.searchService.index.users
+      .searchForFacetValues('genres', inputTagFilter)
+      .then(result => {
+        this.tags = result.facetHits;
+      });
+  }
   // チェックボックスで指定したfacetを文字列として取得する
   updateTags(event: MatSelectionListChange) {
     const facetFilters = event.source.selectedOptions.selected.map(
       item => item.value
     );
-    console.log(facetFilters);
     this.search(facetFilters);
     this.updateParams({
       tags: facetFilters.length ? facetFilters.join() : null,
       page: 1
-    });
-  }
-
-  updateParams(params: object) {
-    this.router.navigate([], {
-      queryParamsHandling: 'merge',
-      queryParams: {
-        params
-      }
     });
   }
 }
