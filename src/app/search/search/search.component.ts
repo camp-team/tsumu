@@ -45,9 +45,7 @@ export class SearchComponent implements OnInit {
   updateParams(params: object) {
     this.router.navigate([], {
       queryParamsHandling: 'merge',
-      queryParams: {
-        ...params
-      }
+      queryParams: params
     });
   }
   // タグの取得を行いプロパティに代入
