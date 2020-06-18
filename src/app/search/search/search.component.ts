@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchService } from 'src/app/services/search.service';
 import { MatSelectionListChange } from '@angular/material/list';
+import { FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -15,24 +17,22 @@ export class SearchComponent implements OnInit {
     selected?: boolean;
   }[];
   userItems = [];
+  inputTagFilter: FormControl = new FormControl();
 
-  constructor(private searchService: SearchService) {
-    this.getFacets();
+  constructor(private searchService: SearchService, private router: Router) {
+    this.buildTags('');
+    this.search();
   }
 
   ngOnInit(): void {
-  }
-
-  // タグの取得を行いプロパティに代入
-  getFacets(): void {
-    this.searchService.index.users
-      .searchForFacetValues('genres', '')
-      .then(result => {
-        this.tags = result.facetHits;
-        // console.log(result.facetHits  , 'resultの中身');
+    // inputで入力した値をsubscribeで受け取り、メソッドの引数に渡す
+    this.inputTagFilter.valueChanges.subscribe((facetQuery: string) => {
+      this.buildTags(facetQuery);
+      this.updateParams({
+        text: facetQuery || null
       });
+    });
   }
-
   // 絞り込みの条件を文字列の配列で受け取り、usersの中からhitするfacetsを持つものを抽出しプロパティに代入
   search(facetFilters?: string[]): void {
     this.searchService.index.users
@@ -41,13 +41,32 @@ export class SearchComponent implements OnInit {
       })
       .then((result) => (this.userItems = result.hits));
   }
-
-
-  selectedTags(event: MatSelectionListChange) {
+  // paramsとして受け取った値を既存のURLの後ろにmergeする
+  updateParams(params: object) {
+    this.router.navigate([], {
+      queryParamsHandling: 'merge',
+      queryParams: {
+        ...params
+      }
+    });
+  }
+  // タグの取得を行いプロパティに代入
+  buildTags(inputTagFilter: string): void {
+    this.searchService.index.users
+      .searchForFacetValues('genres', inputTagFilter)
+      .then(result => {
+        this.tags = result.facetHits;
+      });
+  }
+  // チェックボックスで指定したfacetを文字列として取得する
+  updateTags(event: MatSelectionListChange) {
     const facetFilters = event.source.selectedOptions.selected.map(
-      (item) => `genres:${item.value}`
+      item => item.value
     );
     this.search(facetFilters);
+    this.updateParams({
+      tags: facetFilters.length ? facetFilters.join() : null,
+      page: 1
+    });
   }
-
 }
