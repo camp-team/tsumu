@@ -18,7 +18,9 @@ export class TimelineComponent implements OnInit {
   items = [];
   loading: boolean;
 
-  constructor(private noteService: NoteService, private searchService: SearchService) { }
+  constructor(private noteService: NoteService, private searchService: SearchService) {
+    this.onScroll();
+  }
 
   ngOnInit(): void {
   }
@@ -28,9 +30,10 @@ export class TimelineComponent implements OnInit {
       this.loading = true;
       this.searchService.index.notes
         .search('', {
-          page: ++this.page,
+          page: this.page++,
         })
         .then((result) => {
+          this.maxPage = result.nbPages;
           this.items.push(...result.hits);
           this.loading = false;
         });
