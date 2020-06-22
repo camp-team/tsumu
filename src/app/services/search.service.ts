@@ -12,9 +12,10 @@ const searchClient = algoliasearch(
   providedIn: 'root'
 })
 export class SearchService {
-  // Algolia側で作成したusersインデックスを初期化し、componentからindexにアクセスできるようにする
+  // Algolia側で作成したインデックスを初期化し、componentからindexにアクセスできるようにする
   index = {
-    users: searchClient.initIndex('users')
+    users: searchClient.initIndex('users'),
+    notes: searchClient.initIndex('notes')
   };
 
   constructor() { }
