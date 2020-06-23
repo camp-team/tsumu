@@ -5,7 +5,6 @@ import { AuthService } from 'src/app/services/auth.service';
 
 import { Note } from 'src/app/interfaces/note';
 import { User } from 'src/app/interfaces/user';
-import { UserWithNotes } from 'src/app/interfaces/user-with-notes';
 
 import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
@@ -17,9 +16,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class MypageCardComponent implements OnInit {
   uid: string;
-  myNotes$: Observable<Note[]> = this.noteService.getMyNotes(this.uid);
+  myNotes$: Observable<Note[]>;
   user$: Observable<User>;
-  // userWithNotes$: Observable<UserWithNotes>;
 
   constructor(
     private authService: AuthService,
@@ -31,6 +29,7 @@ export class MypageCardComponent implements OnInit {
       console.log(query);
       this.uid = query;
       this.user$ = this.userService.getUser(query);
+      this.myNotes$ = this.noteService.getMyNotes(this.uid);
     });
   }
 
