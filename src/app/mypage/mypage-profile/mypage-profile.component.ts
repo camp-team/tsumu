@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ProfileEditComponent } from '../profile-edit/profile-edit.component';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/interfaces/user';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-mypage-profile',
@@ -13,9 +14,18 @@ import { User } from 'src/app/interfaces/user';
 })
 export class MypageProfileComponent implements OnInit {
   uid: string = this.authService.uid;
-  user$: Observable<User> = this.authService.user$;
+  user$: Observable<User>;
 
-  constructor(private authService: AuthService, private userService: UserService, private dialog: MatDialog) { }
+  constructor(
+    private authService: AuthService,
+    private userService: UserService,
+    private dialog: MatDialog,
+    private route: ActivatedRoute) {
+    this.route.queryParamMap.subscribe(map => {
+      const query = map.get('id');
+      this.user$ = this.userService.getUser(query);
+    });
+  }
 
   ngOnInit(): void {
   }

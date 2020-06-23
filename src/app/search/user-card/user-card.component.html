@@ -1,5 +1,5 @@
 <div class="grid">
-  <a routerLink="">
+  <a [routerLink]="['/mypage']" [queryParams]="{id: user.id}">
     <mat-card>
       <div class="user">
         <div class="user__avatar" mat-card-avatar mat-mini-fab [style.background-image]="'url(' + user.avatorURL + ')'">
