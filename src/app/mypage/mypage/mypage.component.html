@@ -1,9 +1,11 @@
 <div class="mypage-container">
-  <nav mat-tab-nav-bar mat-align-tabs="center">
-    <a mat-tab-link *ngFor="let link of navLinks" [routerLinkActiveOptions]="{exact: true}" [routerLink]="link.path"
-      routerLinkActive #rla="routerLinkActive" [active]="rla.isActive">
-      {{link.label}}
-    </a>
-  </nav>
-  <router-outlet></router-outlet>
+  <div *ngIf="user$ | async as user">
+    <nav mat-tab-nav-bar mat-align-tabs="center">
+      <a mat-tab-link *ngFor="let link of navLinks" [routerLinkActiveOptions]="{exact: true}" [routerLink]="link.path"
+        [queryParams]="{id: user.id}" routerLinkActive #rla="routerLinkActive" [active]="rla.isActive">
+        {{link.label}}
+      </a>
+    </nav>
+    <router-outlet></router-outlet>
+  </div>
 </div>

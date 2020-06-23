@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+import { User } from 'src/app/interfaces/user';
+import { UserService } from 'src/app/services/user.service';
 
 
 @Component({
@@ -7,6 +11,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./mypage.component.scss']
 })
 export class MypageComponent implements OnInit {
+  user$: Observable<User>;
   navLinks = [
     {
       path: './',
@@ -22,7 +27,11 @@ export class MypageComponent implements OnInit {
     }
   ];
 
-  constructor() {
+  constructor(private route: ActivatedRoute, private userService: UserService) {
+    this.route.queryParamMap.subscribe(map => {
+      const query = map.get('id');
+      this.user$ = this.userService.getUser(query);
+    });
   }
 
   ngOnInit(): void {
