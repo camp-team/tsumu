@@ -1,1 +1,3 @@
-<app-timeline-card [note]="note" *ngFor="let note of notes$ | async"></app-timeline-card>
+<div infiniteScroll (scrolled)="onScroll()">
+  <app-timeline-card [note]="note" *ngFor="let note of notes$ | async"></app-timeline-card>
+</div>

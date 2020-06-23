@@ -45,9 +45,7 @@ export class SearchComponent implements OnInit {
   updateParams(params: object) {
     this.router.navigate([], {
       queryParamsHandling: 'merge',
-      queryParams: {
-        ...params
-      }
+      queryParams: params
     });
   }
   // タグの取得を行いプロパティに代入
@@ -61,8 +59,9 @@ export class SearchComponent implements OnInit {
   // チェックボックスで指定したfacetを文字列として取得する
   updateTags(event: MatSelectionListChange) {
     const facetFilters = event.source.selectedOptions.selected.map(
-      item => item.value
+      item => `genres:${item.value}`
     );
+    console.log(facetFilters);
     this.search(facetFilters);
     this.updateParams({
       tags: facetFilters.length ? facetFilters.join() : null,
