@@ -61,7 +61,6 @@ export class SearchComponent implements OnInit {
     const facetFilters = event.source.selectedOptions.selected.map(
       item => `genres:${item.value}`
     );
-    console.log(facetFilters);
     this.search(facetFilters);
     this.updateParams({
       tags: facetFilters.length ? facetFilters.join() : null,

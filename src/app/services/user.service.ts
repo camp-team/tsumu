@@ -3,12 +3,12 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { User } from '../interfaces/user';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-
 
   constructor(private db: AngularFirestore, private afAuth: AngularFireAuth, private snackBar: MatSnackBar) {
   }
@@ -22,5 +22,8 @@ export class UserService {
         duration: 2000
       });
     });
+  }
+  getUser(id: string): Observable<User> {
+    return this.db.doc<User>(`users/${id}`).valueChanges();
   }
 }
