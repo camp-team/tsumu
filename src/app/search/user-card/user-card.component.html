@@ -2,65 +2,10 @@
   <a routerLink="">
     <mat-card>
       <div class="user">
-        <div class="user__avatar" mat-card-avatar mat-mini-fab [style.background-image]="">
+        <div class="user__avatar" mat-card-avatar mat-mini-fab [style.background-image]="'url(' + user.avatorURL + ')'">
         </div>
         <div class="user__name">
-          <p>name</p>
-        </div>
-      </div>
-    </mat-card>
-  </a>
-  <a routerLink="">
-    <mat-card>
-      <div class="user">
-        <div class="user__avatar" mat-card-avatar mat-mini-fab [style.background-image]="">
-        </div>
-        <div class="user__name">
-          <p>name</p>
-        </div>
-      </div>
-    </mat-card>
-  </a>
-  <a routerLink="">
-    <mat-card>
-      <div class="user">
-        <div class="user__avatar" mat-card-avatar mat-mini-fab [style.background-image]="">
-        </div>
-        <div class="user__name">
-          <p>name</p>
-        </div>
-      </div>
-    </mat-card>
-  </a>
-  <a routerLink="">
-    <mat-card>
-      <div class="user">
-        <div class="user__avatar" mat-card-avatar mat-mini-fab [style.background-image]="">
-        </div>
-        <div class="user__name">
-          <p>name</p>
-        </div>
-      </div>
-    </mat-card>
-  </a>
-  <a routerLink="">
-    <mat-card>
-      <div class="user">
-        <div class="user__avatar" mat-card-avatar mat-mini-fab [style.background-image]="">
-        </div>
-        <div class="user__name">
-          <p>name</p>
-        </div>
-      </div>
-    </mat-card>
-  </a>
-  <a routerLink="">
-    <mat-card>
-      <div class="user">
-        <div class="user__avatar" mat-card-avatar mat-mini-fab [style.background-image]="">
-        </div>
-        <div class="user__name">
-          <p>name</p>
+          <p>{{ user.name }}</p>
         </div>
       </div>
     </mat-card>

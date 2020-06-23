@@ -15,9 +15,7 @@
     </mat-selection-list>
   </div>
 
-  <ul>
-    <li *ngFor="let userItem of userItems">{{ userItem.name }}</li>
-  </ul>
-
-  <app-user-card></app-user-card>
+  <div class="grid">
+    <app-user-card [user]="userItem" *ngFor="let userItem of userItems"></app-user-card>
+  </div>
 </div>
