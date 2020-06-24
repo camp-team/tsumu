@@ -1,8 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { AuthService } from 'src/app/services/auth.service';
-import { Observable } from 'rxjs';
-import { User } from 'src/app/interfaces/user';
-import { Note } from 'src/app/interfaces/note';
+import { NoteWithUser } from 'src/app/interfaces/note';
 
 @Component({
   selector: 'app-timeline-card',
@@ -10,11 +7,9 @@ import { Note } from 'src/app/interfaces/note';
   styleUrls: ['./timeline-card.component.scss']
 })
 export class TimelineCardComponent implements OnInit {
-  @Input() note: Note;
+  @Input() noteWithUser: NoteWithUser;
 
-  user$: Observable<User> = this.authService.user$;
-
-  constructor(private authService: AuthService) {
+  constructor() {
   }
 
   ngOnInit(): void {

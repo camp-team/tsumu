@@ -1,17 +1,17 @@
-<div class="container" *ngIf="user$ | async as user">
-  <a routerLink="/content/{{ note.id }}">
+<div class="container">
+  <a routerLink="/content/{{ noteWithUser.id }}">
     <mat-card class="timeline-card">
       <mat-card-header>
         <div mat-card-avatar class="timeline-header-image" mat-mini-fab
-          [style.background-image]="'url(' + user.avatorURL + ')'">
+          [style.background-image]="'url(' + noteWithUser.author.avatorURL + ')'">
         </div>
-        <mat-card-title>{{ user.name }}</mat-card-title>
-        <mat-card-subtitle>{{ note.createdAt.toDate() | date: "M/d h:mm a" }}</mat-card-subtitle>
+        <mat-card-title>{{ noteWithUser.author.name }}</mat-card-title>
+        <mat-card-subtitle>{{ noteWithUser.createdAt.toDate() | date: "M/d h:mm a" }}</mat-card-subtitle>
       </mat-card-header>
 
-      <mat-card-content *ngIf="note">
+      <mat-card-content>
         <p>
-          {{ note.todo }}
+          {{ noteWithUser.todo }}
         </p>
       </mat-card-content>
     </mat-card>
