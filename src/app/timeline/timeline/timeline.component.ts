@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./timeline.component.scss']
 })
 export class TimelineComponent implements OnInit {
-  notesWithUser$: Observable<NoteWithUser[]> = this.noteService.getAllNotes();
+  notesWithUser$: Observable<NoteWithUser[]> = this.noteService.getNoteWithUser();
 
   page = 0;
   maxPage: number;

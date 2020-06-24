@@ -32,7 +32,7 @@ export class NoteService {
     });
   }
 
-  getAllNotes(): Observable<NoteWithUser[]> {
+  getNoteWithUser(): Observable<NoteWithUser[]> {
     let notes: Note[];
     return this.db.collection('notes').valueChanges().pipe(
       // noteコレクションのデータをuserデータに差し替える
