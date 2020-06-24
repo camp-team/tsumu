@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NoteService } from 'src/app/services/note.service';
 import { tap } from 'rxjs/operators';
 import { SearchService } from 'src/app/services/search.service';
+import { NoteWithUser } from 'src/app/interfaces/note';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-timeline',
@@ -9,9 +11,7 @@ import { SearchService } from 'src/app/services/search.service';
   styleUrls: ['./timeline.component.scss']
 })
 export class TimelineComponent implements OnInit {
-  notes$ = this.noteService.getAllNotes().pipe(
-    tap(data => console.log(data))
-  );
+  notesWithUser$: Observable<NoteWithUser[]> = this.noteService.getNoteWithUser();
 
   page = 0;
   maxPage: number;

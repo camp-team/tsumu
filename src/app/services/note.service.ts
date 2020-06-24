@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Note } from '../interfaces/note';
-import { Observable } from 'rxjs';
 import { firestore } from 'firebase';
+import { Note, NoteWithUser } from '../interfaces/note';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { Observable, of, combineLatest } from 'rxjs';
+import { switchMap, map } from 'rxjs/operators';
+import { User } from '../interfaces/user';
 
 
 @Injectable({
@@ -30,10 +32,38 @@ export class NoteService {
     });
   }
 
-  getAllNotes(): Observable<Note[]> {
-    return this.db
-      .collection<Note>('notes', ref => ref.orderBy('createdAt', 'desc'))
-      .valueChanges();
+  getNoteWithUser(): Observable<NoteWithUser[]> {
+    let notes: Note[];
+    return this.db.collection('notes').valueChanges().pipe(
+      // noteコレクションのデータをuserデータに差し替える
+      switchMap((posts: Note[]) => {
+        notes = posts;
+        if (notes.length) {
+          // 重複しているauthorIdをfilterで落とし、被りのないauthorIdの配列を定義
+          const uniqueAuthorIds: string[] = notes.filter((element, index, array) => {
+            // findIndexの条件に最初に合致するインデックス番号と配列のインデックス番号を比較して同じものだけ抽出する
+            return array.findIndex((value => value.authorId === element.authorId)) === index;
+            // ユニークなauthorIdを持つnoteからauthorIdを参照する
+          }).map(note => note.authorId);
+          // uniqueAuthorIdsの配列をまとめて受け取り、userのドキュメントに変換してまとめて流す
+          return combineLatest(uniqueAuthorIds.map(id => {
+            return this.db.doc(`users/${id}`).valueChanges();
+          }));
+        } else {
+          return of(null);
+        }
+      }),
+      map((users: User[]) => {
+        // notes配列の要素一つ一つに対してauthorIdと一致するuserデータを混ぜる
+        return notes.map((note: Note) => {
+          const noteWithUser: NoteWithUser = {
+            ...note,
+            author: users.find(user => user.id === note.authorId)
+          };
+          return noteWithUser;
+        });
+      })
+    );
   }
 
   getNote(id: string): Observable<Note> {
