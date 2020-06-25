@@ -16,15 +16,14 @@
           <span>ログアウト</span>
         </button>
         <mat-divider></mat-divider>
-        <button mat-menu-item>
+        <a mat-menu-item [routerLink]="['/mypage']" [queryParams]="{id: user.id}">
           <mat-icon>account_circle</mat-icon>
           <span>マイページ</span>
-        </button>
-        <mat-divider></mat-divider>
-        <button mat-menu-item>
+        </a>
+        <a mat-menu-item [routerLink]="['/mypage/settings']" [queryParams]="{id: user.id}">
           <mat-icon>settings</mat-icon>
           <span>設定</span>
-        </button>
+        </a>
       </mat-menu>
     </div>
     <ng-template #loginArea>
