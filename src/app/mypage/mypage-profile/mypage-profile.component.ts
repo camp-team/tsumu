@@ -16,6 +16,7 @@ import { tap } from 'rxjs/operators';
 export class MypageProfileComponent implements OnInit {
   uid: string = this.authService.uid;
   user$: Observable<User>;
+  isEditable: boolean;
 
   constructor(
     private authService: AuthService,
@@ -24,11 +25,11 @@ export class MypageProfileComponent implements OnInit {
     private route: ActivatedRoute) {
     this.authService.user$.pipe(
       tap(user => console.log(user))
-    );
+    ).subscribe();
     this.route.queryParamMap.subscribe(map => {
       const query = map.get('id');
       this.user$ = this.userService.getUser(query);
-
+      this.isEditable = this.userService.getIsEditable(query, this.uid);
     });
   }
 
