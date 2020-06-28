@@ -27,7 +27,7 @@ export class UserService {
     return this.db.doc<User>(`users/${id}`).valueChanges();
   }
 
-  getIsEditable(id: string, uid: string): boolean {
+  IsEditable(id: string, uid: string): boolean {
     if (id === uid) {
       return true;
     } else {
