@@ -8,8 +8,11 @@ import { DrawerService } from './services/drawer.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  isOpened$: Observable<boolean> = this.drawerService.isOpen$;
+  isOpened: boolean;
   title = 'tsumu';
 
-  constructor(private drawerService: DrawerService) {}
+  constructor(private drawerService: DrawerService) {
+    this.drawerService.toggle();
+    this.drawerService.isOpen$.subscribe(opened => this.isOpened = opened);
+  }
 }

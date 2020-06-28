@@ -13,9 +13,9 @@ export class HeaderComponent implements OnInit {
   constructor(
     private drawerSerivce: DrawerService,
     private authService: AuthService
-  ) {}
+  ) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   toggle() {
     this.drawerSerivce.toggle();

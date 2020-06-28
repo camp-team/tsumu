@@ -6,6 +6,7 @@ import { ProfileEditComponent } from '../profile-edit/profile-edit.component';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/interfaces/user';
 import { ActivatedRoute } from '@angular/router';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-mypage-profile',
@@ -15,15 +16,20 @@ import { ActivatedRoute } from '@angular/router';
 export class MypageProfileComponent implements OnInit {
   uid: string = this.authService.uid;
   user$: Observable<User>;
+  isEditable: boolean;
 
   constructor(
     private authService: AuthService,
     private userService: UserService,
     private dialog: MatDialog,
     private route: ActivatedRoute) {
+    this.authService.user$.pipe(
+      tap(user => console.log(user))
+    ).subscribe();
     this.route.queryParamMap.subscribe(map => {
       const query = map.get('id');
       this.user$ = this.userService.getUser(query);
+      this.isEditable = this.userService.getIsEditable(query, this.uid);
     });
   }
 

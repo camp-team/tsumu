@@ -26,6 +26,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatDividerModule } from '@angular/material/divider';
 
 import { DrawerComponent } from './drawer/drawer.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { DrawerComponent } from './drawer/drawer.component';
     MatSnackBarModule,
     MatMenuModule,
     MatDividerModule,
+    RouterModule,
   ],
   providers: [{ provide: REGION, useValue: 'asia-northeast1' }],
   bootstrap: [AppComponent],

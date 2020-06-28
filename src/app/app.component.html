@@ -2,7 +2,7 @@
   <app-header></app-header>
 
   <mat-sidenav-container>
-    <mat-sidenav fixedInViewport fixedTopGap="64" mode="side" [opened]="isOpened$ | async">
+    <mat-sidenav fixedInViewport fixedTopGap="64" mode="side" [opened]="isOpened">
       <app-drawer></app-drawer>
     </mat-sidenav>
     <mat-sidenav-content class="router-outlet">
