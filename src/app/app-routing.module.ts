@@ -11,12 +11,13 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        pathMatch: 'full',
-        loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
+        loadChildren: () =>
+          import('./home/home.module').then((m) => m.HomeModule),
       },
       {
         path: 'note',
-        loadChildren: () => import('./note/note.module').then((m) => m.NoteModule),
+        loadChildren: () =>
+          import('./note/note.module').then((m) => m.NoteModule),
         canLoad: [AuthGuard],
         canActivate: [AuthGuard]
       },
