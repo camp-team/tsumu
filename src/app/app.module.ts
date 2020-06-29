@@ -27,6 +27,7 @@ import { MatDividerModule } from '@angular/material/divider';
 
 import { DrawerComponent } from './drawer/drawer.component';
 import { RouterModule } from '@angular/router';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { RouterModule } from '@angular/router';
     HeaderComponent,
     FooterComponent,
     DrawerComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
