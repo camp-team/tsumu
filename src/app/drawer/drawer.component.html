@@ -1,15 +1,15 @@
 <div *ngIf="user$ | async as user">
   <mat-list dense class="nav-list">
     <mat-nav-list>
-      <a mat-list-item class="mat-list-item" routerLink="note">
+      <a mat-list-item class="mat-list-item" routerLink="/note">
         <mat-icon mat-list-icon>create</mat-icon>
         <p class="mat-list-item__text">今日のつみあげ</p>
       </a>
-      <a mat-list-item routerLink="timeline">
+      <a mat-list-item routerLink="/timeline">
         <mat-icon mat-list-icon>timeline</mat-icon>
         <p class="mat-list-item__text">タイムライン</p>
       </a>
-      <a mat-list-item routerLink="search">
+      <a mat-list-item routerLink="/search">
         <mat-icon mat-list-icon>search</mat-icon>
         <p class="mat-list-item__text">ユーザー検索</p>
       </a>
