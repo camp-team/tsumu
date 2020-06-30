@@ -29,7 +29,7 @@ export class MypageProfileComponent implements OnInit {
     this.route.queryParamMap.subscribe(map => {
       const query = map.get('id');
       this.user$ = this.userService.getUser(query);
-      this.isEditable = this.userService.getIsEditable(query, this.uid);
+      this.isEditable = this.userService.IsEditable(query, this.uid);
     });
   }
 
