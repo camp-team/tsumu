@@ -3,9 +3,12 @@
   flex-flow: column;
   min-height: 100%;
 }
-.router-outlet {
-  margin-top: 72px;
-}
 .mat-sidenav-container {
   flex: 1;
+}
+.sidenav {
+  width: 240px;
+}
+.router-outlet {
+  margin-top: 72px;
 }
