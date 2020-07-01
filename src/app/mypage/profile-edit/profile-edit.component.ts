@@ -4,6 +4,8 @@ import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { UserService } from 'src/app/services/user.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { ActivatedRoute } from '@angular/router';
+import { switchMap, map } from 'rxjs/operators';
 
 
 @Component({
@@ -29,7 +31,34 @@ export class ProfileEditComponent implements OnInit {
     genres: [['']]
   });
 
-  constructor(private fb: FormBuilder, private userService: UserService, private authService: AuthService) { }
+  constructor(
+    private fb: FormBuilder,
+    private userService: UserService,
+    private authService: AuthService,
+    private route: ActivatedRoute
+  ) {
+    // クエリーパラメータのidを取得してuser$に変換する
+    this.route.queryParamMap.pipe(
+      switchMap(params => {
+        const id = params.get('id');
+        return this.userService.getUser(id);
+      }),
+      // userをbioとgenresのみを持つデータに変換
+      map(user => {
+        const bioAndGenres = {
+          bio: user.bio,
+          genres: user.genres
+        };
+        return bioAndGenres;
+      })
+    ).subscribe(bioAndGenres => {
+      this.form.patchValue({
+        bio: bioAndGenres.bio,
+        genres: ''
+      });
+      this.targets = bioAndGenres.genres;
+    });
+  }
 
   ngOnInit(): void {
   }
