@@ -52,7 +52,10 @@ export class ProfileEditComponent implements OnInit {
         return bioAndGenres;
       })
     ).subscribe(bioAndGenres => {
-      this.form.patchValue(bioAndGenres);
+      this.form.patchValue({
+        bio: bioAndGenres.bio,
+        genres: ''
+      });
       this.targets = bioAndGenres.genres;
     });
   }
