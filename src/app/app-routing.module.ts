@@ -22,7 +22,6 @@ const routes: Routes = [
           import('./note/note.module').then((m) => m.NoteModule),
         canLoad: [AuthGuard],
         canActivate: [AuthGuard],
-        canDeactivate: [FormGuard]
       },
       {
         path: 'timeline',
