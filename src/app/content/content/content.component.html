@@ -1,3 +1,17 @@
-<div *ngIf="note$ | async as note">
-  <p>{{ note.log }}</p>
+<div class="content-container">
+  <div *ngIf="note$ | async as note">
+    <p class="date">{{ note.createdAt.toDate() | date: "M月d日" }}</p>
+    <mat-card class="section">
+      <p class="section__title">今日やること</p>
+      <p>{{ note.todo }}</p>
+    </mat-card>
+    <mat-card class="section">
+      <p class="section__title">やったこと</p>
+      <p>{{ note.done }}</p>
+    </mat-card>
+    <mat-card class="section">
+      <p class="section__title">感想</p>
+      <p>{{ note.log }}</p>
+    </mat-card>
+  </div>
 </div>
