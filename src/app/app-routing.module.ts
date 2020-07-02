@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ShellComponent } from './shell/shell.component';
+import { FormGuard } from './guards/form.guard';
 
 const routes: Routes = [
   {
@@ -20,7 +21,8 @@ const routes: Routes = [
         loadChildren: () =>
           import('./note/note.module').then((m) => m.NoteModule),
         canLoad: [AuthGuard],
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
+        canDeactivate: [FormGuard]
       },
       {
         path: 'timeline',

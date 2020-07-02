@@ -9,6 +9,7 @@ import { NoteService } from 'src/app/services/note.service';
   styleUrls: ['./note.component.scss'],
 })
 export class NoteComponent implements OnInit {
+  isComplete: boolean;
   form = this.fb.group({
     todo: ['', [Validators.required, Validators.maxLength(1000)]],
     done: ['', [Validators.required, Validators.maxLength(1000)]],
