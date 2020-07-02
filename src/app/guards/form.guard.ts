@@ -10,7 +10,6 @@ export class FormGuard implements CanDeactivate<NoteComponent> {
   canDeactivate(
     component: NoteComponent,
   ): Observable<boolean> | boolean {
-    console.log(component.form);
     if (component.form.pristine || component.isComplete) {
       return true;
     }
