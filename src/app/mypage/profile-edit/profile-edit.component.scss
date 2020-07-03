@@ -1,5 +1,12 @@
+@import "mixins";
+
 .edit-container {
   text-align: center;
+  height: 580px;
+  width: 640px;
+  @include sp {
+    width: 330px;
+  }
 }
 .main {
   width: 600px;

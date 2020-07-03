@@ -1,7 +1,12 @@
+@import "mixins";
+
 .wrap {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  @include sp {
+    display: block;
+  }
 }
 .hero {
   margin: 24px auto 0;
@@ -49,4 +54,7 @@
   max-width: 520px;
   max-height: 520px;
   margin-top: 48px;
+  @include sp {
+    width: 340px;
+  }
 }

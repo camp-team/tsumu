@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { Observable } from 'rxjs';
@@ -38,8 +39,8 @@ export class MypageProfileComponent implements OnInit {
 
   openDialog() {
     this.dialog.open(ProfileEditComponent, {
-      height: '720px',
-      width: '640px',
+      // height: '580px',
+      // width: '640px',
       autoFocus: false,
       restoreFocus: false
     });
