@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ShellComponent } from './shell/shell.component';
-import { FormGuard } from './guards/form.guard';
 
 const routes: Routes = [
   {
@@ -27,16 +26,22 @@ const routes: Routes = [
         path: 'timeline',
         loadChildren: () =>
           import('./timeline/timeline.module').then((m) => m.TimelineModule),
+        canLoad: [AuthGuard],
+        canActivate: [AuthGuard],
       },
       {
         path: 'content/:id',
         loadChildren: () =>
           import('./content/content.module').then((m) => m.ContentModule),
+        canLoad: [AuthGuard],
+        canActivate: [AuthGuard],
       },
       {
         path: 'search',
         loadChildren: () =>
           import('./search/search.module').then((m) => m.SearchModule),
+        canLoad: [AuthGuard],
+        canActivate: [AuthGuard]
       },
       {
         path: 'mypage',
