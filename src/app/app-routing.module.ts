@@ -20,22 +20,28 @@ const routes: Routes = [
         loadChildren: () =>
           import('./note/note.module').then((m) => m.NoteModule),
         canLoad: [AuthGuard],
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
       },
       {
         path: 'timeline',
         loadChildren: () =>
           import('./timeline/timeline.module').then((m) => m.TimelineModule),
+        canLoad: [AuthGuard],
+        canActivate: [AuthGuard],
       },
       {
         path: 'content/:id',
         loadChildren: () =>
           import('./content/content.module').then((m) => m.ContentModule),
+        canLoad: [AuthGuard],
+        canActivate: [AuthGuard],
       },
       {
         path: 'search',
         loadChildren: () =>
           import('./search/search.module').then((m) => m.SearchModule),
+        canLoad: [AuthGuard],
+        canActivate: [AuthGuard]
       },
       {
         path: 'mypage',
