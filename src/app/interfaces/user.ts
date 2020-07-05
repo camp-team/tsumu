@@ -1,8 +1,11 @@
 import { firestore } from 'firebase';
+import { Note } from './note';
 
 export interface User {
   id: string;
   name: string;
   avatorURL: string;
   createdAt: firestore.Timestamp;
+  genres?: string[];
+  bio?: string;
 }

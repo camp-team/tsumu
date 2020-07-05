@@ -10,8 +10,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
   providedIn: 'root',
 })
 export class AuthService {
-  user$: Observable<User>;
   uid: string;
+  user$: Observable<User>;
 
   constructor(private afAuth: AngularFireAuth, private db: AngularFirestore) {
     this.user$ = this.afAuth.authState.pipe(

@@ -1,0 +1,29 @@
+.card {
+  margin: 24px 0;
+}
+.content__avatar {
+  background: center / cover;
+  border-radius: 50%;
+  box-shadow: none;
+  margin-right: 24px;
+}
+.items {
+  display: flex;
+  text-align: center;
+  margin-bottom: 48px;
+  justify-content: space-between;
+  p {
+    margin: 0;
+  }
+}
+.user {
+  display: flex;
+  text-align: center;
+}
+.chips {
+  mat-icon {
+    font-size: 18px;
+    margin-top: 6px;
+  }
+}
+

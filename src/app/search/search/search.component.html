@@ -1,0 +1,21 @@
+<div class="container">
+  <form class="search">
+    <input class="search__input" [formControl]="inputTagFilter" type="text" matInput autocomplete="off"
+      placeholder="ジャンルを入力してください">
+    <button class="search__button">
+      <mat-icon>search</mat-icon>
+    </button>
+  </form>
+
+  <div class="tag-list">
+    <mat-selection-list (selectionChange)="updateTags($event)" dense>
+      <mat-list-option *ngFor="let tag of tags" [value]="tag.value">
+        {{ tag.value }}({{ tag.count }})
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
+
+  <div class="grid">
+    <app-user-card [user]="userItem" *ngFor="let userItem of userItems"></app-user-card>
+  </div>
+</div>

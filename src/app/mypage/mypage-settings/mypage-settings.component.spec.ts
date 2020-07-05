@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SerchComponent } from './serch.component';
+import { MypageSettingsComponent } from './mypage-settings.component';
 
-describe('SerchComponent', () => {
-  let component: SerchComponent;
-  let fixture: ComponentFixture<SerchComponent>;
+describe('MypageSettingsComponent', () => {
+  let component: MypageSettingsComponent;
+  let fixture: ComponentFixture<MypageSettingsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SerchComponent ]
+      declarations: [ MypageSettingsComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SerchComponent);
+    fixture = TestBed.createComponent(MypageSettingsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

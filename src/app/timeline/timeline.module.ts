@@ -7,6 +7,7 @@ import { TimelineCardComponent } from './timeline-card/timeline-card.component';
 
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { MatButtonModule } from '@angular/material/button';
     CommonModule,
     TimelineRoutingModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    InfiniteScrollModule
   ]
 })
 export class TimelineModule { }

@@ -1,0 +1,26 @@
+<div class="container" *ngIf="user$ | async as user">
+  <mat-card class="card">
+    <div class="content">
+      <div class="items">
+        <div class="user">
+          <div class="content__avatar" mat-card-avatar [style.background-image]="'url(' + user.avatorURL +')'"></div>
+          <p>{{ user.name }}</p>
+        </div>
+        <span class="spacer"></span>
+        <button *ngIf="isEditable" class="content__button" mat-stroked-button color="primary"
+          (click)="openDialog()">プロフィールを編集</button>
+      </div>
+      <p class="content__bio">
+        {{ user.bio }}
+      </p>
+      <mat-chip-list aria-label="Gnere selection">
+        <mat-chip class="chips" *ngFor="let tag of user.genres">
+          <span>
+            <mat-icon fontSet="material-icons-outlined">local_offer</mat-icon>
+          </span>
+          {{ tag }}
+        </mat-chip>
+      </mat-chip-list>
+    </div>
+  </mat-card>
+</div>

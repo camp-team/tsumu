@@ -1,0 +1,14 @@
+.content {
+  display: flex;
+  flex-flow: column;
+  min-height: 100%;
+}
+.mat-sidenav-container {
+  flex: 1;
+}
+.sidenav {
+  width: 240px;
+}
+.router-outlet {
+  margin-top: 72px;
+}

@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
 import { DrawerService } from './services/drawer.service';
 
 @Component({
@@ -8,8 +7,7 @@ import { DrawerService } from './services/drawer.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  isOpened$: Observable<boolean> = this.drawerService.isOpen$;
-  title = 'tsumu';
 
-  constructor(private drawerService: DrawerService) {}
+  constructor() {
+  }
 }
