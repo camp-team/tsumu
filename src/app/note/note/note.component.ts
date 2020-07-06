@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormControl } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { NoteService } from 'src/app/services/note.service';
+import { Title, Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-note',
@@ -34,8 +35,21 @@ export class NoteComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private noteService: NoteService
-  ) { }
+    private noteService: NoteService,
+    private title: Title,
+    private meta: Meta,
+  ) {
+    this.title.setTitle('フォーム入力ページ | TSUMU');
+    this.meta.addTags([
+      { name: 'description', content: 'その日やったことや学んだことをフォームに入力し、保存する。' },
+      { property: 'og:type', content: 'article' },
+      { property: 'og:title', content: 'TSUMU - 今日のつみあげをフォームに入力' },
+      { property: 'og:description', content: 'その日やったことや学んだことをフォームに入力し、保存する。' },
+      { property: 'og:url', content: location.href },
+      { property: 'og:image', content: '/assets/Tsumu.png' },
+      { name: 'twitter:card', content: 'Summary Card' },
+    ]);
+  }
 
   ngOnInit(): void {
   }
