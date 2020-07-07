@@ -1,0 +1,14 @@
+.content-container {
+  max-width: 1024px;
+  margin: 0 auto;
+}
+.date {
+  margin-left: 16px;
+}
+.section {
+  margin: 8px;
+  &__title {
+    font-size: 18px;
+    font-weight: 550;
+  }
+}
