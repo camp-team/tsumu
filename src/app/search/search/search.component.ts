@@ -3,6 +3,7 @@ import { SearchService } from 'src/app/services/search.service';
 import { MatSelectionListChange } from '@angular/material/list';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Title, Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-search',
@@ -19,9 +20,19 @@ export class SearchComponent implements OnInit {
   userItems = [];
   inputTagFilter: FormControl = new FormControl();
 
-  constructor(private searchService: SearchService, private router: Router) {
+  constructor(private searchService: SearchService, private router: Router, private title: Title, private meta: Meta) {
     this.buildTags('');
     this.search();
+    this.title.setTitle('ユーザー検索ページ | TSUMU');
+    this.meta.addTags([
+      { name: 'description', content: 'AngularやFirebaseなどユーザーが学習中のジャンルをタグで絞り込み、ユーザーを検索する。' },
+      { property: 'og:type', content: 'article' },
+      { property: 'og:title', content: 'TSUMU - ジャンルごとにユーザーを検索' },
+      { property: 'og:description', content: 'AngularやFirebaseなどユーザーが学習中のジャンルをタグで絞り込み、ユーザーを検索する。' },
+      { property: 'og:url', content: location.href },
+      { property: 'og:image', content: '/assets/Tsumu.png' },
+      { name: 'twitter:card', content: 'Summary Card' },
+    ]);
   }
 
   ngOnInit(): void {
