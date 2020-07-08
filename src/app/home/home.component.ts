@@ -10,6 +10,7 @@ import { User } from '../interfaces/user';
 })
 export class HomeComponent implements OnInit {
   user$: Observable<User> = this.authService.user$;
+  isProcessing: boolean;
 
   constructor(private authService: AuthService) { }
 
@@ -17,6 +18,9 @@ export class HomeComponent implements OnInit {
   }
 
   login() {
-    this.authService.login();
+    this.isProcessing = true;
+    this.authService.login().finally(() => {
+      this.isProcessing = false;
+    });
   }
 }
