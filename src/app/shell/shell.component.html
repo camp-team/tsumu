@@ -2,7 +2,7 @@
   <app-header></app-header>
 
   <mat-sidenav-container class="mat-sidenav-container">
-    <mat-sidenav class="sidenav" fixedInViewport fixedTopGap="64" mode="side" [opened]="isOpened">
+    <mat-sidenav *ngIf="user$ | async" class="sidenav" fixedInViewport fixedTopGap="64" mode="side" [opened]="isOpened">
       <app-drawer></app-drawer>
     </mat-sidenav>
     <mat-sidenav-content class="router-outlet">
