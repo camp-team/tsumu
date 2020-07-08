@@ -26,10 +26,10 @@ export class AuthService {
     );
   }
 
-  login() {
+  login(): Promise<void> {
     const provider = new auth.TwitterAuthProvider();
     provider.setCustomParameters({ prompt: 'select_account' });
-    this.afAuth.signInWithRedirect(provider);
+    return this.afAuth.signInWithRedirect(provider);
   }
 
   logout() {

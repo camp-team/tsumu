@@ -11,6 +11,7 @@ import { Title, Meta } from '@angular/platform-browser';
 })
 export class HomeComponent implements OnInit {
   user$: Observable<User> = this.authService.user$;
+  isProcessing: boolean;
 
   constructor(private authService: AuthService, private title: Title, private meta: Meta) {
     this.title.setTitle('トップページ | TSUMU');
@@ -29,6 +30,9 @@ export class HomeComponent implements OnInit {
   }
 
   login() {
-    this.authService.login();
+    this.isProcessing = true;
+    this.authService.login().finally(() => {
+      this.isProcessing = false;
+    });
   }
 }
