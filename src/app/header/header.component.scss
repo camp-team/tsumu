@@ -10,7 +10,11 @@
   flex: 1;
 }
 .logo {
-  margin-left: 24px;
+  margin-left: 56px;
+  margin-top: 8px;
+  img {
+    height: 24px;
+  }
 }
 .button {
   margin-right: 24px;
