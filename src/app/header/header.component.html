@@ -7,7 +7,7 @@
       <img src="/assets/logo-tsumu.png" alt="">
     </a>
     <span class="spacer"></span>
-    <div *ngIf="user$ | async as user; else loginArea">
+    <div *ngIf="user$ | async as user">
       <button class="avator" mat-mini-fab [matMenuTriggerFor]="menu"
         [style.background-image]="'url(' + user.avatorURL + ')'"></button>
       <mat-menu #menu="matMenu">
@@ -26,10 +26,5 @@
         </a>
       </mat-menu>
     </div>
-    <ng-template #loginArea>
-      <button class="button" mat-raised-button color="primary" (click)="login()">
-        ログイン
-      </button>
-    </ng-template>
   </mat-toolbar-row>
 </mat-toolbar>
