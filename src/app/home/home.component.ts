@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Observable } from 'rxjs';
 import { User } from '../interfaces/user';
+import { Title, Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +12,18 @@ import { User } from '../interfaces/user';
 export class HomeComponent implements OnInit {
   user$: Observable<User> = this.authService.user$;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private title: Title, private meta: Meta) {
+    this.title.setTitle('トップページ | TSUMU');
+    this.meta.addTags([
+      { name: 'description', content: 'サービス説明やログインボタンを表示させるトップページ' },
+      { property: 'og:type', content: 'website' },
+      { property: 'og:title', content: 'TSUMU - トップページ' },
+      { property: 'og:description', content: 'サービス説明やログインボタンを表示させるトップページ' },
+      { property: 'og:url', content: location.href },
+      { property: 'og:image', content: '/assets/Tsumu.png' },
+      { name: 'twitter:card', content: 'Summary Card' },
+    ]);
+  }
 
   ngOnInit(): void {
   }

@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/interfaces/user';
 import { UserService } from 'src/app/services/user.service';
+import { Title, Meta } from '@angular/platform-browser';
+import { tap } from 'rxjs/operators';
 
 
 @Component({
@@ -27,10 +29,28 @@ export class MypageComponent implements OnInit {
     }
   ];
 
-  constructor(private route: ActivatedRoute, private userService: UserService) {
+  constructor(
+    private route: ActivatedRoute,
+    private userService: UserService,
+    private title: Title,
+    private meta: Meta,
+  ) {
     this.route.queryParamMap.subscribe(map => {
       const query = map.get('id');
-      this.user$ = this.userService.getUser(query);
+      this.user$ = this.userService.getUser(query).pipe(
+        tap(data => {
+          this.title.setTitle(`${data.name} | TSUMU`);
+          this.meta.addTags([
+            { name: 'description', content: 'ユーザーの情報を表示させるマイページ' },
+            { property: 'og:type', content: 'article' },
+            { property: 'og:title', content: 'TSUMU - ユーザーのマイページ' },
+            { property: 'og:description', content: 'ユーザーの情報を表示させるマイページ' },
+            { property: 'og:url', content: location.href },
+            { property: 'og:image', content: '/assets/Tsumu.png' },
+            { name: 'twitter:card', content: 'Summary Card' },
+          ]);
+        })
+      );
     });
   }
 

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NoteService } from 'src/app/services/note.service';
-import { tap } from 'rxjs/operators';
 import { SearchService } from 'src/app/services/search.service';
 import { NoteWithUser } from 'src/app/interfaces/note';
 import { Observable } from 'rxjs';
+import { Title, Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-timeline',
@@ -18,8 +18,22 @@ export class TimelineComponent implements OnInit {
   items = [];
   loading: boolean;
 
-  constructor(private noteService: NoteService, private searchService: SearchService) {
+  constructor(
+    private noteService: NoteService,
+    private searchService: SearchService,
+    private title: Title,
+    private meta: Meta) {
     this.onScroll();
+    this.title.setTitle('タイムライン | TSUMU');
+    this.meta.addTags([
+      { name: 'description', content: '全ユーザーが投稿した記録がタイムラインとして表示される' },
+      { property: 'og:type', content: 'article' },
+      { property: 'og:title', content: 'TSUMU - 全ユーザーのタイムライン' },
+      { property: 'og:description', content: '全ユーザーが投稿した記録がタイムラインとして表示される' },
+      { property: 'og:url', content: location.href },
+      { property: 'og:image', content: '/assets/Tsumu.png' },
+      { name: 'twitter:card', content: 'Summary Card' },
+    ]);
   }
 
   ngOnInit(): void {

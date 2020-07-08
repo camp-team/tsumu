@@ -1,14 +1,21 @@
+@import "mixins";
+
 .edit-container {
   text-align: center;
+  height: 580px;
+  max-width: 640px;
+  @include sp {
+    max-width: 330px;
+  }
 }
 .main {
-  width: 600px;
+  width: 100%;
 }
 .textarea {
   margin-bottom: 24px;
   text-align: center;
   textarea {
-    width: 552px;
+    width: 100%;
   }
 }
 .chip-list {
