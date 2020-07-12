@@ -13,11 +13,15 @@
     {
       "target": "tsumu",
       "public": "dist/tsumu",
-      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
       "rewrites": [
         {
           "source": "**",
-          "destination": "/index.html"
+          "function": "render"
         }
       ]
     }
