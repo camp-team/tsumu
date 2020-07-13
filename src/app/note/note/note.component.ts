@@ -61,5 +61,6 @@ export class NoteComponent implements OnInit {
       log: this.form.value.log,
       authorId: this.uid,
     });
+    this.isComplete = true;
   }
 }
