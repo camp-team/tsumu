@@ -60,6 +60,11 @@ const routes: Routes = [
         loadChildren: () =>
           import('./legal/legal.module').then((m) => m.LegalModule),
       },
+      {
+        path: 'exit',
+        loadChildren: () =>
+          import('./exit/exit.module').then((m) => m.ExitModule),
+      },
     ]
   },
   {

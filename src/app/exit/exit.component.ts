@@ -12,4 +12,8 @@ export class ExitComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  unregister() {
+    console.log('退会');
+  }
+
 }
