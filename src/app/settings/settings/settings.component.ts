@@ -21,5 +21,4 @@ export class SettingsComponent implements OnInit {
       restoreFocus: false
     });
   }
-
 }
