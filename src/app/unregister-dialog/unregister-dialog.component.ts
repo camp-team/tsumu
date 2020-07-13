@@ -12,4 +12,8 @@ export class UnregisterDialogComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  unregister() {
+
+  }
+
 }

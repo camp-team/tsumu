@@ -18,7 +18,7 @@
         <p class="mat-list-item__text">マイページ</p>
       </a>
       <mat-divider></mat-divider>
-      <a mat-list-item routerLink="/settings">
+      <a mat-list-item routerLink="/settings" [queryParams]="{id: user.id}">
         <mat-icon mat-list-icon>settings</mat-icon>
         <p class="mat-list-item__text">設定</p>
       </a>
