@@ -46,7 +46,7 @@ export class MypageComponent implements OnInit {
             { property: 'og:title', content: 'TSUMU - ユーザーのマイページ' },
             { property: 'og:description', content: 'ユーザーの情報を表示させるマイページ' },
             { property: 'og:url', content: location.href },
-            { property: 'og:image', content: '/assets/Tsumu.png' },
+            { property: 'og:image', content: 'https://tsumu-3eb2a.web.app/assets/Tsumu.png' },
             { name: 'twitter:card', content: 'Summary Card' },
           ]);
         })
