@@ -15,10 +15,6 @@ const routes: Routes = [
         component: MypageCardComponent,
       },
       {
-        path: 'settings',
-        component: MypageSettingsComponent,
-      },
-      {
         path: '',
         pathMatch: 'full',
         component: MypageProfileComponent,
