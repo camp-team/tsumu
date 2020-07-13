@@ -61,9 +61,9 @@ const routes: Routes = [
           import('./legal/legal.module').then((m) => m.LegalModule),
       },
       {
-        path: 'exit',
+        path: 'settings',
         loadChildren: () =>
-          import('./exit/exit.module').then((m) => m.ExitModule),
+          import('./settings/settings.module').then((m) => m.SettingsModule),
       },
     ]
   },
