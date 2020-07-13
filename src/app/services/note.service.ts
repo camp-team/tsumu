@@ -34,7 +34,9 @@ export class NoteService {
 
   getNoteWithUser(): Observable<NoteWithUser[]> {
     let notes: Note[];
-    return this.db.collection('notes').valueChanges().pipe(
+    return this.db.collection('notes', ref => {
+      return ref.orderBy('createdAt', 'desc');
+    }).valueChanges().pipe(
       // noteコレクションのデータをuserデータに差し替える
       switchMap((posts: Note[]) => {
         notes = posts;
