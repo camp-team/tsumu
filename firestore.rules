@@ -9,6 +9,7 @@ service cloud.firestore {
     }
     match /notes/{note} {
       allow read: if request.auth.uid != null;
+      allow create: if request.auth.uid != null;
       allow update: if request.auth.uid == resource.data.id && resource.data.id == request.resource.data.id;
       allow delete: if request.auth.uid == resource.data.id;
     }
