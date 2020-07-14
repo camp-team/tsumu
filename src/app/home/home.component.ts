@@ -21,8 +21,10 @@ export class HomeComponent implements OnInit {
       { property: 'og:title', content: 'TSUMU - トップページ' },
       { property: 'og:description', content: 'サービス説明やログインボタンを表示させるトップページ' },
       { property: 'og:url', content: location.href },
-      { property: 'og:image', content: 'https://tsumu-3eb2a.web.app/assets/Tsumu.png' },
-      { property: 'twitter:title', content: 'home' },
+      { property: 'og:image', content: '/assets/Tsumu.png' },
+      { property: 'twitter:title', content: 'TSUMU - トップページ' },
+      { property: 'twitter:url', content: 'https://tsumu-3eb2a.web.app/' },
+      { property: 'twitter:description', content: 'サービス説明やログインボタンを表示させるトップページ' },
       { property: 'twitter:image', content: 'https://tsumu-3eb2a.web.app/assets/Tsumu.png' },
       { name: 'twitter:card', content: 'summary_large_image' },
     ]);

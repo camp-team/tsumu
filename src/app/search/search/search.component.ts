@@ -31,7 +31,9 @@ export class SearchComponent implements OnInit {
       { property: 'og:description', content: 'AngularやFirebaseなどユーザーが学習中のジャンルをタグで絞り込み、ユーザーを検索する。' },
       { property: 'og:url', content: location.href },
       { property: 'og:image', content: 'https://tsumu-3eb2a.web.app/assets/Tsumu.png' },
-      { property: 'twitter:title', content: 'search' },
+      { property: 'twitter:title', content: 'TSUMU - ジャンルごとにユーザーを検索' },
+      { property: 'twitter:url', content: 'https://tsumu-3eb2a.web.app/' },
+      { property: 'twitter:description', content: 'AngularやFirebaseなどユーザーが学習中のジャンルをタグで絞り込み、ユーザーを検索する。' },
       { property: 'twitter:image', content: 'https://tsumu-3eb2a.web.app/assets/Tsumu.png' },
       { name: 'twitter:card', content: 'summary_large_image' },
     ]);

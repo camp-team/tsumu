@@ -34,7 +34,9 @@ export class ContentComponent implements OnInit {
             { property: 'og:description', content: 'その日のつみあげを全て表示する' },
             { property: 'og:url', content: location.href },
             { property: 'og:image', content: 'https://tsumu-3eb2a.web.app/assets/Tsumu.png' },
-            { property: 'twitter:title', content: 'content' },
+            { property: 'twitter:title', content: 'TSUMU - つみあげの詳細' },
+            { property: 'twitter:url', content: 'https://tsumu-3eb2a.web.app/' },
+            { property: 'twitter:description', content: 'その日のつみあげを全て表示する' },
             { property: 'twitter:image', content: 'https://tsumu-3eb2a.web.app/assets/Tsumu.png' },
             { name: 'twitter:card', content: 'summary_large_image' },
           ]);
