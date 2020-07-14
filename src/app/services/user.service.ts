@@ -34,4 +34,8 @@ export class UserService {
       return false;
     }
   }
+
+  deleteUser(id: string): Promise<void> {
+    return this.db.doc(`users_${id}`).delete();
+  }
 }
