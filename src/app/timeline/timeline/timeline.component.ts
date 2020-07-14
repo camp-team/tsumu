@@ -31,8 +31,10 @@ export class TimelineComponent implements OnInit {
       { property: 'og:title', content: 'TSUMU - 全ユーザーのタイムライン' },
       { property: 'og:description', content: '全ユーザーが投稿した記録がタイムラインとして表示される' },
       { property: 'og:url', content: location.href },
-      { property: 'og:image', content: '/assets/Tsumu.png' },
-      { name: 'twitter:card', content: 'Summary Card' },
+      { property: 'og:image', content: 'https://tsumu-3eb2a.web.app/assets/Tsumu.png' },
+      { property: 'twitter:title', content: 'timeline' },
+      { property: 'twitter:image', content: 'https://tsumu-3eb2a.web.app/assets/Tsumu.png' },
+      { name: 'twitter:card', content: 'summary_large_image' },
     ]);
   }
 

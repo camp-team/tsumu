@@ -46,8 +46,10 @@ export class NoteComponent implements OnInit {
       { property: 'og:title', content: 'TSUMU - 今日のつみあげをフォームに入力' },
       { property: 'og:description', content: 'その日やったことや学んだことをフォームに入力し、保存する。' },
       { property: 'og:url', content: location.href },
-      { property: 'og:image', content: '/assets/Tsumu.png' },
-      { name: 'twitter:card', content: 'Summary Card' },
+      { property: 'og:image', content: 'https://tsumu-3eb2a.web.app/assets/Tsumu.png' },
+      { property: 'twitter:title', content: 'note' },
+      { property: 'twitter:image', content: 'https://tsumu-3eb2a.web.app/assets/Tsumu.png' },
+      { name: 'twitter:card', content: 'summary_large_image' },
     ]);
   }
 
