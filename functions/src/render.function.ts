@@ -4,7 +4,7 @@ const fetch = require('node-fetch');
 const url = require('url');
 const useragent = require('express-useragent');
 
-const APP_URL = 'https://tsumu-3eb2a.web.app/';
+const APP_URL = 'tsumu-3eb2a.web.app/';
 const RENDERTRON_URL = 'https://tsumu-ver-2.an.r.appspot.com';
 
 const generateUrl = (req: any) => {
