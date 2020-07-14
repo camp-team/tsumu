@@ -15,6 +15,7 @@ import { User } from '../interfaces/user';
 export class NoteService {
   createdAt = firestore.Timestamp.now();
 
+
   constructor(private db: AngularFirestore, private snackBar: MatSnackBar, private router: Router) { }
 
   postNote(note: Omit<Note, 'id' | 'createdAt'>): Promise<void> {
@@ -74,5 +75,11 @@ export class NoteService {
     return this.db.collection<Note>('notes', ref =>
       ref.where('authorId', '==', uid))
       .valueChanges();
+  }
+
+  deleteNotes(id: string) {
+    const notes: Note[] = this.db.collection<Note>('notes', ref =>
+      ref.where('authorId', '==', id));
+    notes.map(note => )
   }
 }
