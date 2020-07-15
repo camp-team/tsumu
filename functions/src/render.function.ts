@@ -4,7 +4,7 @@ const fetch = require('node-fetch');
 const url = require('url');
 const useragent = require('express-useragent');
 
-const APP_URL = 'tsumu-3eb2a.web.app';
+const APP_URL = 'tsumu-3eb2a.web.app/';
 const RENDERTRON_URL = 'https://tsumu-ver-2.an.r.appspot.com';
 
 const generateUrl = (req: any) => {
@@ -25,10 +25,12 @@ app.get('*', async (req: any, res: any) => {
       `${RENDERTRON_URL}/render/${generateUrl(req)}`
     );
     const body = await response.text();
+    console.log(body);
     res.set('Cache-Control', 'public, max-age=86400, s-maxage=86400');
     res.set('Vary', 'User-Agent');
     res.send(body.toString());
   } else {
+    console.log('isNotBot');
     fetch(`https://${APP_URL}`)
       .then((result: any) => result.text())
       .then((body: any) => {
