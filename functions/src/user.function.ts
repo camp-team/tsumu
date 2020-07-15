@@ -3,6 +3,7 @@ import { Algolia } from './utils/algolia';
 
 const algolia = new Algolia();
 
+
 export const createUser = functions
   .region('asia-northeast1')
   .firestore.document('users/{id}')
@@ -26,6 +27,12 @@ export const deleteUser = functions
       return;
     }
   });
+
+export const deleteAdminUser = functions
+  .region('asia-northeast1')
+  .https.onCall((data, context) => {
+    return functions.auth.user().onDelete();
+  })
 
 export const updateUser = functions
   .region('asia-northeast1')
