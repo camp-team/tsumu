@@ -1,5 +1,7 @@
 import * as functions from 'firebase-functions';
 import { Algolia } from './utils/algolia';
+import * as admin from 'firebase-admin';
+import { db } from './utils/util';
 
 const algolia = new Algolia();
 
@@ -31,7 +33,14 @@ export const deleteUser = functions
 export const deleteAdminUser = functions
   .region('asia-northeast1')
   .https.onCall((data, context) => {
-    return functions.auth.user().onDelete();
+    return admin.auth().deleteUser(data);
+  })
+
+export const deleteUserData = functions
+  .region('asia-northeast1')
+  .auth.user()
+  .onDelete(user => {
+    return db.doc(`users/${user.uid}`).delete();
   })
 
 export const updateUser = functions

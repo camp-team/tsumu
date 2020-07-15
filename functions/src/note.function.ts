@@ -26,3 +26,4 @@ export const deleteNote = functions
       return;
     }
   });
+

@@ -4,13 +4,18 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { User } from '../interfaces/user';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
+import { AngularFireFunctions } from '@angular/fire/functions/functions';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor(private db: AngularFirestore, private afAuth: AngularFireAuth, private snackBar: MatSnackBar) {
+  constructor(
+    private db: AngularFirestore,
+    private afAuth: AngularFireAuth,
+    private snackBar: MatSnackBar,
+    private fns: AngularFireFunctions) {
   }
 
   saveProfile(uid: string, targets: string[], bio: string) {
@@ -35,7 +40,8 @@ export class UserService {
     }
   }
 
-  deleteUser(id: string): Promise<void> {
-    return this.db.doc(`users_${id}`).delete();
+  deleteUser(id: string) {
+    const callable = this.fns.httpsCallable('deleteAdminUser');
+    return callable(id).toPromise();
   }
 }
