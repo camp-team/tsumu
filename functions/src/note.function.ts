@@ -15,6 +15,10 @@ export const createNote = functions
     })
   })
 
+export const deleteNoteData = functions
+  .region('asia-northeast1')
+  .
+
 export const deleteNote = functions
   .region('asia-northeast1')
   .firestore.document('notes/{id}')
