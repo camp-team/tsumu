@@ -24,13 +24,11 @@ app.get('*', async (req: any, res: any) => {
     const response = await fetch(
       `${RENDERTRON_URL}/render/${generateUrl(req)}`
     );
-    console.log(response);
     const body = await response.text();
     res.set('Cache-Control', 'public, max-age=86400, s-maxage=86400');
     res.set('Vary', 'User-Agent');
     res.send(body.toString());
   } else {
-    console.log('isNotBot');
     fetch(`https://${APP_URL}`)
       .then((result: any) => result.text())
       .then((body: any) => {
