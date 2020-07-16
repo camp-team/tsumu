@@ -24,8 +24,8 @@ app.get('*', async (req: any, res: any) => {
     const response = await fetch(
       `${RENDERTRON_URL}/render/${generateUrl(req)}`
     );
+    console.log(response);
     const body = await response.text();
-    console.log(body);
     res.set('Cache-Control', 'public, max-age=86400, s-maxage=86400');
     res.set('Vary', 'User-Agent');
     res.send(body.toString());
