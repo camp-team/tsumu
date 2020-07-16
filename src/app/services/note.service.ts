@@ -16,7 +16,10 @@ export class NoteService {
   createdAt = firestore.Timestamp.now();
 
 
-  constructor(private db: AngularFirestore, private snackBar: MatSnackBar, private router: Router) { }
+  constructor(
+    private db: AngularFirestore,
+    private snackBar: MatSnackBar,
+    private router: Router, ) { }
 
   postNote(note: Omit<Note, 'id' | 'createdAt'>): Promise<void> {
     const id = this.db.createId();
@@ -77,9 +80,16 @@ export class NoteService {
       .valueChanges();
   }
 
-  deleteNotes(id: string) {
-    const notes: Note[] = this.db.collection<Note>('notes', ref =>
-      ref.where('authorId', '==', id));
-    notes.map(note => )
+  deleteNotes(id: string): Observable<void> {
+    return this.db.collection<Note>('notes', ref =>
+      ref.where('authorId', '==', id))
+      .valueChanges()
+      .pipe(
+        map(notes => {
+          notes.map(note => {
+            return this.db.doc(`notes/${note.id}`).delete();
+          });
+        })
+      );
   }
 }

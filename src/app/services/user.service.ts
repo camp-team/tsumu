@@ -4,7 +4,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { User } from '../interfaces/user';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
-import { AngularFireFunctions } from '@angular/fire/functions/functions';
+import { AngularFireFunctions } from '@angular/fire/functions';
 
 @Injectable({
   providedIn: 'root'

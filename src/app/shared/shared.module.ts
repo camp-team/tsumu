@@ -11,6 +11,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 
 @NgModule({
   declarations: [],
@@ -29,6 +31,7 @@ import { MatDividerModule } from '@angular/material/divider';
     MatChipsModule,
     MatIconModule,
     MatDividerModule,
+    MatSnackBarModule,
   ]
 })
 export class SharedModule { }
