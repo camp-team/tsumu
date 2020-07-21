@@ -1,5 +1,6 @@
 import * as functions from 'firebase-functions';
 import { Algolia } from './utils/algolia';
+import { db } from './utils/util';
 
 const algolia = new Algolia();
 
@@ -27,3 +28,17 @@ export const deleteNote = functions
     }
   });
 
+export const deleteNoteData = functions
+  .region('asia-northeast1')
+  .https.onCall((data, _) => {
+    const notes: Observable<Note[]> = db.collection<Note>(`notes`, ref =>
+      ref.where('authorId', '==', data))
+      .valueChanges();
+    notes.subscribe(items =>
+      Promise.all(
+        items.map(item => {
+          return db.doc(`notes/${item.id}`).delete();
+        })
+      )
+    );
+  })

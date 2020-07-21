@@ -18,6 +18,7 @@ export const createUser = functions
     });
   });
 
+// Algoriaのuserデータの削除
 export const deleteUser = functions
   .region('asia-northeast1')
   .firestore.document('users/{id}')
@@ -30,12 +31,14 @@ export const deleteUser = functions
     }
   });
 
-export const deleteAdminUser = functions
+// FirebaseのAuthenticationのuserデータを削除
+export const removeAdminUser = functions
   .region('asia-northeast1')
-  .https.onCall((data, context) => {
+  .https.onCall((data, _) => {
     return admin.auth().deleteUser(data);
   })
 
+// Firestoreのuserデータを削除
 export const deleteUserData = functions
   .region('asia-northeast1')
   .auth.user()
