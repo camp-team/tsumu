@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { firestore } from 'firebase';
-import { Note, NoteWithUser } from '../interfaces/note';
+import { Note, NoteWithUser } from '../../../functions/src/interfaces/note';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Observable, of, combineLatest } from 'rxjs';
 import { switchMap, map, tap } from 'rxjs/operators';
-import { User } from '../interfaces/user';
+import { User } from '../../../functions/src/interfaces/user';
 import { AngularFireFunctions } from '@angular/fire/functions/functions';
 
 

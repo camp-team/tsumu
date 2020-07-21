@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { ProfileEditComponent } from '../profile-edit/profile-edit.component';
 import { UserService } from 'src/app/services/user.service';
-import { User } from 'src/app/interfaces/user';
+import { User } from 'functions/src/interfaces/user';
 import { ActivatedRoute } from '@angular/router';
 import { tap } from 'rxjs/operators';
 

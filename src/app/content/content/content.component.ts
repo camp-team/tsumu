@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NoteService } from 'src/app/services/note.service';
 import { Observable } from 'rxjs';
-import { Note } from 'src/app/interfaces/note';
+import { Note } from 'functions/src/interfaces/note';
 import { Title, Meta } from '@angular/platform-browser';
 import { tap } from 'rxjs/operators';
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { User } from 'src/app/interfaces/user';
+import { User } from 'functions/src/interfaces/user';
 import { UserService } from 'src/app/services/user.service';
 import { Title, Meta } from '@angular/platform-browser';
 import { tap } from 'rxjs/operators';

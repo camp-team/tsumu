@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NoteService } from '../services/note.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Note } from '../interfaces/note';
+import { Note } from '../../../functions/src/interfaces/note';
 import { Observable } from 'rxjs';
 
 @Component({
