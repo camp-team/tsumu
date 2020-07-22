@@ -44,4 +44,5 @@ function deleteQueryBatch(
         deleteQueryBatch(query, batchSize, resolve, reject)
       );
     })
-    .catch(reject);
+    .catch(reject)
+}
