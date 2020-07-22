@@ -3,9 +3,6 @@ import { UserService } from '../services/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NoteService } from '../services/note.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { Note } from '../../../functions/src/interfaces/note';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-unregister-dialog',
@@ -18,10 +15,8 @@ export class UnregisterDialogComponent implements OnInit {
   constructor(
     private userService: UserService,
     private route: ActivatedRoute,
-    private noteService: NoteService,
     private snackBar: MatSnackBar,
     private router: Router,
-    private db: AngularFirestore
   ) {
     this.route.queryParamMap.subscribe(params => {
       this.id = params.get('id');
@@ -32,15 +27,13 @@ export class UnregisterDialogComponent implements OnInit {
   }
 
   unregister() {
-    this.noteService.deleteNotes(this.id);
-    // this.noteService.deleteNotes(this.id);
-    // this.userService.deleteUser(this.id)
-    //   .then(() => {
-    //     this.snackBar.open('退会を完了しました。', null, {
-    //       duration: 3000
-    //     });
-    //   }).then(() => {
-    //     this.router.navigateByUrl('/');
-    //   });
+    this.userService.deleteUser(this.id)
+      .then(() => {
+        this.snackBar.open('退会を完了しました。', null, {
+          duration: 3000
+        });
+      }).then(() => {
+        this.router.navigateByUrl('/');
+      });
   }
 }

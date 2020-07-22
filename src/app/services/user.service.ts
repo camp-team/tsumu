@@ -5,6 +5,7 @@ import { User } from '../../../functions/src/interfaces/user';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
 import { AngularFireFunctions } from '@angular/fire/functions';
+import { Note } from 'functions/src/interfaces/note';
 
 @Injectable({
   providedIn: 'root'
@@ -41,7 +42,17 @@ export class UserService {
   }
 
   deleteUser(id: string) {
-    const callable = this.fns.httpsCallable('deleteAdminUser');
+    const callable = this.fns.httpsCallable('removeAdminUser');
     return callable(id).toPromise();
+    // const notes: Observable<Note[]> = this.db.collection<Note>(`notes`, ref =>
+    //   ref.where('authorId', '==', id))
+    //   .valueChanges();
+    // notes.subscribe(items =>
+    //   Promise.all(
+    //     items.map(item => {
+    //       return this.db.doc(`notes/${item.id}`).delete();
+    //     })
+    //   )
+    // );
   }
 }

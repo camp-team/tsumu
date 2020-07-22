@@ -1,7 +1,7 @@
 import * as functions from 'firebase-functions';
 import { Algolia } from './utils/algolia';
 import * as admin from 'firebase-admin';
-import { db } from './utils/util';
+import { db, deleteCollectionByReference } from './utils/util';
 
 const algolia = new Algolia();
 
@@ -42,8 +42,14 @@ export const removeAdminUser = functions
 export const deleteUserData = functions
   .region('asia-northeast1')
   .auth.user()
-  .onDelete(user => {
-    return db.doc(`users/${user.uid}`).delete();
+  .onDelete(async (uid, _) => {
+    const myNotesRef = db.collection(`notes`).where('authorId', '==', uid);
+    const deleteFirestoreUser = db.doc(`users/${uid}`).delete();
+
+    return Promise.all([
+      deleteCollectionByReference(myNotesRef),
+      deleteFirestoreUser
+    ])
   })
 
 export const updateUser = functions

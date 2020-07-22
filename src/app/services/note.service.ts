@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 import { Observable, of, combineLatest } from 'rxjs';
 import { switchMap, map, tap } from 'rxjs/operators';
 import { User } from '../../../functions/src/interfaces/user';
-import { AngularFireFunctions } from '@angular/fire/functions/functions';
+import { AngularFireFunctions } from '@angular/fire/functions';
 
 
 @Injectable({
@@ -83,8 +83,8 @@ export class NoteService {
       .valueChanges();
   }
 
-  deleteNotes(id: string) {
-    const callable = this.fns.httpsCallable('deleteNoteData');
-    return callable(id).toPromise();
-  }
+  // deleteNotes(id: string) {
+  //   const callable = this.fns.httpsCallable('deleteNoteData');
+  //   return callable(id).toPromise();
+  // }
 }
