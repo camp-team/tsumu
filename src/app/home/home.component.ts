@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Observable } from 'rxjs';
-import { User } from '../../../functions/src/interfaces/user';
+import { User } from '../interfaces/user';
 import { Title, Meta } from '@angular/platform-browser';
 
 @Component({

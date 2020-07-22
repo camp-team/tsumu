@@ -3,7 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase';
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-import { User } from '../../../functions/src/interfaces/user';
+import { User } from '../interfaces/user';
 import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable({

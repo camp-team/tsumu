@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { User } from '../../../functions/src/interfaces/user';
+import { User } from '../interfaces/user';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
 import { AngularFireFunctions } from '@angular/fire/functions';
-import { Note } from 'functions/src/interfaces/note';
+import { Note } from 'src/app/interfaces/note';
 
 @Injectable({
   providedIn: 'root'

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NoteService } from 'src/app/services/note.service';
 import { SearchService } from 'src/app/services/search.service';
-import { NoteWithUser } from 'functions/src/interfaces/note';
+import { NoteWithUser } from 'src/app/interfaces/note';
 import { Observable } from 'rxjs';
 import { Title, Meta } from '@angular/platform-browser';
 
