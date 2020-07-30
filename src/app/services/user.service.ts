@@ -42,9 +42,8 @@ export class UserService {
     }
   }
 
-  deleteUser(id: string) {
+  async deleteUser(id: string) {
     const callable = this.fns.httpsCallable('removeAdminUser');
-    console.log(id);
-    return callable(id).toPromise();
+    return await callable(id).toPromise();
   }
 }
