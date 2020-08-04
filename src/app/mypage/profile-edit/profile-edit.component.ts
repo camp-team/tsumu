@@ -56,7 +56,9 @@ export class ProfileEditComponent implements OnInit {
         bio: bioAndGenres.bio,
         genres: ''
       });
-      this.targets = bioAndGenres.genres;
+      if (bioAndGenres) {
+        this.targets = bioAndGenres.genres;
+      }
     });
   }
 

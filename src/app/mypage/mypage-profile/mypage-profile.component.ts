@@ -23,9 +23,6 @@ export class MypageProfileComponent implements OnInit {
     private userService: UserService,
     private dialog: MatDialog,
     private route: ActivatedRoute) {
-    this.authService.user$.pipe(
-      tap(user => console.log(user))
-    ).subscribe();
     this.route.queryParamMap.subscribe(map => {
       const query = map.get('id');
       this.user$ = this.userService.getUser(query);
