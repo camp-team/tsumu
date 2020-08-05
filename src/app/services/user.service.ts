@@ -6,6 +6,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
 import { AngularFireFunctions } from '@angular/fire/functions';
 import { Note } from 'src/app/interfaces/note';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -14,9 +15,9 @@ export class UserService {
 
   constructor(
     private db: AngularFirestore,
-    private afAuth: AngularFireAuth,
     private snackBar: MatSnackBar,
-    private fns: AngularFireFunctions) {
+    private fns: AngularFireFunctions,
+    private router: Router) {
   }
 
   saveProfile(uid: string, targets: string[], bio: string) {
@@ -41,7 +42,7 @@ export class UserService {
     }
   }
 
-  deleteUser(id: string) {
+  async deleteUser(id: string) {
     const callable = this.fns.httpsCallable('removeAdminUser');
     return callable(id).toPromise();
   }

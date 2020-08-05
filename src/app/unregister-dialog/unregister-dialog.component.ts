@@ -29,11 +29,11 @@ export class UnregisterDialogComponent implements OnInit {
   unregister() {
     this.userService.deleteUser(this.id)
       .then(() => {
-        this.snackBar.open('退会を完了しました。', null, {
-          duration: 3000
-        });
-      }).then(() => {
         this.router.navigateByUrl('/');
-      });
+        this.snackBar.open('アカウントを削除しました。', null, {
+          duration: 4000
+        });
+      })
+      .catch(() => console.log('err'));
   }
 }
