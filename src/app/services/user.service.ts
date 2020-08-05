@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireFunctions } from '@angular/fire/functions';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { User } from '../interfaces/user';
 
@@ -14,8 +13,7 @@ export class UserService {
   constructor(
     private db: AngularFirestore,
     private snackBar: MatSnackBar,
-    private fns: AngularFireFunctions,
-    private router: Router) {
+    private fns: AngularFireFunctions, ) {
   }
 
   saveProfile(uid: string, targets: string[], bio: string) {
