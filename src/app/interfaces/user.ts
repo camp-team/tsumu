@@ -1,5 +1,4 @@
 import { firestore } from 'firebase';
-import { Note } from './note';
 
 export interface User {
   id: string;

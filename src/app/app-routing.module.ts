@@ -60,6 +60,11 @@ const routes: Routes = [
         loadChildren: () =>
           import('./legal/legal.module').then((m) => m.LegalModule),
       },
+      {
+        path: 'settings',
+        loadChildren: () =>
+          import('./settings/settings.module').then((m) => m.SettingsModule),
+      },
     ]
   },
   {

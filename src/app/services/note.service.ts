@@ -5,8 +5,9 @@ import { Note, NoteWithUser } from '../interfaces/note';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Observable, of, combineLatest } from 'rxjs';
-import { switchMap, map } from 'rxjs/operators';
+import { switchMap, map, tap } from 'rxjs/operators';
 import { User } from '../interfaces/user';
+import { AngularFireFunctions } from '@angular/fire/functions';
 
 
 @Injectable({
@@ -15,7 +16,13 @@ import { User } from '../interfaces/user';
 export class NoteService {
   createdAt = firestore.Timestamp.now();
 
-  constructor(private db: AngularFirestore, private snackBar: MatSnackBar, private router: Router) { }
+
+  constructor(
+    private db: AngularFirestore,
+    private snackBar: MatSnackBar,
+    private router: Router,
+    private fns: AngularFireFunctions
+  ) { }
 
   postNote(note: Omit<Note, 'id' | 'createdAt'>): Promise<void> {
     const id = this.db.createId();
@@ -77,4 +84,9 @@ export class NoteService {
       ref.where('authorId', '==', uid))
       .valueChanges();
   }
+
+  // deleteNotes(id: string) {
+  //   const callable = this.fns.httpsCallable('deleteNoteData');
+  //   return callable(id).toPromise();
+  // }
 }

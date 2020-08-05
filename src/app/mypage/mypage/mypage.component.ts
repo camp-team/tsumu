@@ -22,10 +22,6 @@ export class MypageComponent implements OnInit {
     {
       path: 'archive',
       label: 'つみあげ記録',
-    },
-    {
-      path: 'settings',
-      label: '設定',
     }
   ];
 

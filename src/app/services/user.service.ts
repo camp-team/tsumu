@@ -1,16 +1,19 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { AngularFireAuth } from '@angular/fire/auth';
-import { User } from '../interfaces/user';
+import { AngularFireFunctions } from '@angular/fire/functions';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
+import { User } from '../interfaces/user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor(private db: AngularFirestore, private afAuth: AngularFireAuth, private snackBar: MatSnackBar) {
+  constructor(
+    private db: AngularFirestore,
+    private snackBar: MatSnackBar,
+    private fns: AngularFireFunctions, ) {
   }
 
   saveProfile(uid: string, targets: string[], bio: string) {
@@ -33,5 +36,10 @@ export class UserService {
     } else {
       return false;
     }
+  }
+
+  async deleteUser(id: string) {
+    const callable = this.fns.httpsCallable('removeAdminUser');
+    return callable(id).toPromise();
   }
 }
