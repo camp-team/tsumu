@@ -34,6 +34,6 @@ export class UnregisterDialogComponent implements OnInit {
           duration: 4000
         });
       })
-      .catch(() => console.log('err'));
+      .catch(error => console.error(error?.message));
   }
 }
