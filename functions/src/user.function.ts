@@ -34,22 +34,21 @@ export const deleteUser = functions
 // FirebaseのAuthenticationのuserデータを削除
 export const removeAdminUser = functions
   .region('asia-northeast1')
-  .https.onCall((data, _) => {
-    return admin.auth().deleteUser(data);
+  .https.onCall((uid, _) => {
+    console.log(uid);
+    return admin.auth().deleteUser(uid);
   })
 
 // Firestoreのuserデータを削除
 export const deleteUserData = functions
   .region('asia-northeast1')
   .auth.user()
-  .onDelete(async (uid, _) => {
-    const myNotesRef = db.collection(`notes`).where('authorId', '==', uid);
-    const deleteFirestoreUser = db.doc(`users/${uid}`).delete();
-
-    return Promise.all([
-      deleteCollectionByReference(myNotesRef),
-      deleteFirestoreUser
-    ])
+  .onDelete(async (user, _) => {
+    const uid = user.uid;
+    await db.doc(`users/${uid}`).delete();
+    const myNotesRef = db.collection(`notes`).where('authorId', '==', uid)
+    await deleteCollectionByReference(myNotesRef);
+    return;
   })
 
 export const updateUser = functions

@@ -20,7 +20,6 @@ function deleteQueryBatch(
   resolve: any,
   reject: any
 ) {
-  const deletedData: string[] = [];
   query
     .get()
     .then((snapshot) => {
@@ -29,15 +28,15 @@ function deleteQueryBatch(
       }
 
       const batch = db.batch();
-      snapshot.docs.forEach((doc) => batch.delete(doc.ref));
-      deletedData.push(snapshot.docs.toString());
+      snapshot.docs.forEach((doc) => {
+        batch.delete(doc.ref)
+      });
 
       return batch.commit().then(() => snapshot.size);
     })
     .then((numDeleted) => {
       if (numDeleted === 0) {
         resolve();
-        console.log(deletedData, 'Resolved!');
         return;
       }
       process.nextTick(() =>
