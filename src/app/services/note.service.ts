@@ -84,9 +84,4 @@ export class NoteService {
       ref.where('authorId', '==', uid))
       .valueChanges();
   }
-
-  // deleteNotes(id: string) {
-  //   const callable = this.fns.httpsCallable('deleteNoteData');
-  //   return callable(id).toPromise();
-  // }
 }
