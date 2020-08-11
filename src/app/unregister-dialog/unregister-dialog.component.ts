@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NoteService } from '../services/note.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({

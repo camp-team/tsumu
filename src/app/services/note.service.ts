@@ -5,7 +5,7 @@ import { Note, NoteWithUser } from '../interfaces/note';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Observable, of, combineLatest } from 'rxjs';
-import { switchMap, map, tap } from 'rxjs/operators';
+import { switchMap, map } from 'rxjs/operators';
 import { User } from '../interfaces/user';
 import { AngularFireFunctions } from '@angular/fire/functions';
 
@@ -84,9 +84,4 @@ export class NoteService {
       ref.where('authorId', '==', uid))
       .valueChanges();
   }
-
-  // deleteNotes(id: string) {
-  //   const callable = this.fns.httpsCallable('deleteNoteData');
-  //   return callable(id).toPromise();
-  // }
 }

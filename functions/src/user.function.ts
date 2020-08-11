@@ -35,7 +35,6 @@ export const deleteUser = functions
 export const removeAdminUser = functions
   .region('asia-northeast1')
   .https.onCall((uid, _) => {
-    console.log(uid);
     return admin.auth().deleteUser(uid);
   })
 
