@@ -26,7 +26,6 @@ export class MypageCardComponent implements OnInit {
     private userService: UserService) {
     this.route.queryParamMap.subscribe(map => {
       const query = map.get('id');
-      console.log(query);
       this.uid = query;
       this.user$ = this.userService.getUser(query);
       this.myNotes$ = this.noteService.getMyNotes(this.uid);
