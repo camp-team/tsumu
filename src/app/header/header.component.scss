@@ -1,3 +1,5 @@
+@import "mixins";
+
 .header {
   background: #fff;
   position: fixed;
@@ -8,6 +10,11 @@
 }
 .spacer {
   flex: 1;
+}
+.mat-tool-bar {
+  @include sp {
+    height: 64px;
+  }
 }
 .logo {
   margin-left: 56px;
