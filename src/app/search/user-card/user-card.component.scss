@@ -1,6 +1,18 @@
-
-.user__avatar {
-  background: center / cover;
-  border-radius: 50%;
-  box-shadow: none;
+.card {
+  height: 100px;
+  margin-bottom: 16px;
+}
+.user {
+  max-height: 75px;
+  &__avatar {
+    background: center / cover;
+    border-radius: 50%;
+    box-shadow: none;
+  }
+  &__name p {
+    max-height: 24px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 }

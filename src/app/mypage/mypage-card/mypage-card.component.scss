@@ -4,12 +4,14 @@
   gap: 24px;
   margin-top: 24px;
 }
-mat-card {
+.card {
   padding: 8px;
+  margin-bottom: 8px;
+  max-height: 194px;
 }
 .note {
-  background: rgba(blue, 0.05);
   padding: 12px;
+  max-height: 154px;
   &__header {
     display: flex;
     text-align: center;
@@ -24,6 +26,11 @@ mat-card {
     margin:0 0 0 16px;
   }
   &__body p {
+    max-height: 24px;
     font-weight: 500;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
   }
 }

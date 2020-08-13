@@ -8,10 +8,9 @@ import { MypageCardComponent } from './mypage-card/mypage-card.component';
 import { SharedModule } from '../shared/shared.module';
 import { MypageProfileComponent } from './mypage-profile/mypage-profile.component';
 import { ProfileEditComponent } from './profile-edit/profile-edit.component';
-import { MypageSettingsComponent } from './mypage-settings/mypage-settings.component';
 
 @NgModule({
-  declarations: [MypageComponent, MypageCardComponent, MypageProfileComponent, ProfileEditComponent, MypageSettingsComponent],
+  declarations: [MypageComponent, MypageCardComponent, MypageProfileComponent, ProfileEditComponent],
   imports: [
     CommonModule,
     MypageRoutingModule,
