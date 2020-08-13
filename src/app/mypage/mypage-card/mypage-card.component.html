@@ -2,7 +2,7 @@
   <div class="grid" *ngIf="user$ | async as user">
     <div *ngFor="let myNote of myNotes$ | async">
       <a routerLink="/content/{{ myNote.id }}">
-        <mat-card>
+        <mat-card class="card">
           <div class="note">
             <div class="note__header">
               <div mat-card-avatar class="note__avatar" mat-mini-fab
