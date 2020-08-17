@@ -3,11 +3,11 @@
     <div class="hero">
       <div class="hero__message">
         <p>
-          <span>TSUMUはあなたの学びを</span>
-          <span>つみあげるサービスです。</span>
+          <span>あなたの学びを</span>
+          <span>つみあげる。</span>
         </p>
       </div>
-      <p class="hero__sub">その日学習したものを自分の言葉で振り返り、日々の学びをつみあげていきましょう。簡単に一言まとめるだけでも定着度は変わってくるはずです。
+      <p class="hero__sub">学習しっぱなしではなく、その日自分が何を学んだのかを記録する。
       </p>
       <div class="hero__item" *ngIf="!(user$ | async)">
         <button (click)="login()" [disabled]="isProcessing">
@@ -17,5 +17,31 @@
       </div>
     </div>
     <img class="top-image" src="/assets/Book lover-bro.png" alt="">
+  </div>
+
+  <div class="feature">
+    <mat-card>
+      <p>TSUMUは学習の記録と</p>
+      <p>定着を図り、</p>
+      <p>あなたの学習をサポートします。</p>
+    </mat-card>
+  </div>
+
+  <div class="usage">
+    <div class="item">
+      <img class="item__img" src="/assets/usage/Checklist-pana.png" alt="">
+      <p class="item__title">記録をつける</p>
+      <p class="item__description">今日のやること・やったこと、学習のメモを記録する。</p>
+    </div>
+    <div class="item">
+      <img class="item__img" src="/assets/usage/Work chat-pana.png" alt="">
+      <p class="item__title">タイムライン</p>
+      <p class="item__description">他のユーザーが投稿したつみあげをタイムラインで確認。</p>
+    </div>
+    <div class="item">
+      <img class="item__img" src="/assets/usage/People search-pana.png" alt="">
+      <p class="item__title">ユーザー検索</p>
+      <p class="item__description">学習中のテーマでユーザーを検索し、仲間を見つけましょう。</p>
+    </div>
   </div>
 </div>
