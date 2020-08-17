@@ -16,9 +16,9 @@
       <div class="form">
         <p>やったこと</p>
         <mat-form-field class="form__area" appearance="outline">
-          <textarea placeholder="今日やったことは何ですか？" formControlName="log" matInput autocomplete="off" required
+          <textarea placeholder="今日やったことは何ですか？" formControlName="done" matInput autocomplete="off" required
             matTextareaAutosize [matAutosizeMinRows]="3" [matAutosizeMaxRows]="10">
-            <mat-label>log</mat-label>
+            <mat-label>done</mat-label>
           </textarea>
           <mat-error *ngIf="doneControl.hasError('required')">テキストを入力してください</mat-error>
           <mat-error *ngIf="doneControl.hasError('maxlength')">最大文字数を超えています</mat-error>
@@ -28,9 +28,9 @@
       <div class="form">
         <p>今日のつみあげ</p>
         <mat-form-field class="form__area" appearance="outline">
-          <textarea placeholder="今日の学びで気づいたこと、感じたことをメモしましょう！" formControlName="done" matInput autocomplete="off"
-            required matTextareaAutosize [matAutosizeMinRows]="3" [matAutosizeMaxRows]="10">
-            <mat-label>done</mat-label>
+          <textarea placeholder="今日の学びで気づいたこと、感じたことをメモしましょう！" formControlName="log" matInput autocomplete="off" required
+            matTextareaAutosize [matAutosizeMinRows]="3" [matAutosizeMaxRows]="10">
+            <mat-label>log</mat-label>
           </textarea>
           <mat-error *ngIf="logControl.hasError('required')">テキストを入力してください</mat-error>
           <mat-error *ngIf="logControl.hasError('maxlength')">最大文字数を超えています</mat-error>

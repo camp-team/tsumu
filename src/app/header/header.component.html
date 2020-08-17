@@ -1,8 +1,10 @@
 <mat-toolbar class="header">
   <mat-toolbar-row class="mat-tool-bar">
-    <button mat-icon-button (click)="toggle()">
-      <mat-icon>menu</mat-icon>
-    </button>
+    <div *ngIf="user$ | async">
+      <button mat-icon-button (click)="toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
     <a routerLink="/" class="logo">
       <img src="/assets/image.png" alt="">
     </a>
