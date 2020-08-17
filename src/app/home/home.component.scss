@@ -84,9 +84,9 @@
   }
 }
 .item {
-  max-width: 297px;
+  max-width: 240px;
   text-align: center;
-  margin-left: 32px;
+  margin-left: 64px;
   @include sp {
     margin-left: 0;
   }
