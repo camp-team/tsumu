@@ -15,7 +15,6 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { RouterModule } from '@angular/router';
 
 import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
 import { DrawerComponent } from './drawer/drawer.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ShellComponent } from './shell/shell.component';
@@ -33,7 +32,6 @@ import { MatDividerModule } from '@angular/material/divider';
   declarations: [
     AppComponent,
     HeaderComponent,
-    FooterComponent,
     DrawerComponent,
     PageNotFoundComponent,
     ShellComponent,

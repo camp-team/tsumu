@@ -4,6 +4,13 @@
     margin-left: 16px;
   }
 }
+.terms {
+  margin-top: 24px;
+  &__text {
+    color: rgba(black, .6);
+    padding-left: 44px;
+  }
+}
 .mat-nav-list a.active {
   background: #F5F5F5;
 }
