@@ -49,16 +49,14 @@ export class ProfileEditComponent implements OnInit {
           bio: user.bio,
           genres: user.genres
         };
-        return bioAndGenres;
+        if (bioAndGenres) {
+          return bioAndGenres;
+        }
       })
     ).subscribe(bioAndGenres => {
       this.form.patchValue({
         bio: bioAndGenres.bio,
-        genres: ''
       });
-      if (bioAndGenres) {
-        this.targets = bioAndGenres.genres;
-      }
     });
   }
 
