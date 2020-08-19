@@ -1,4 +1,9 @@
-<div class="container">
+<div class="container" *ngIf="myNotes$ | async as myNotes">
+  <div *ngIf="myNotes.length === 0">
+    <mat-card class="no-note">
+      <p>つみあげはまだありません。</p>
+    </mat-card>
+  </div>
   <div class="grid" *ngIf="user$ | async as user">
     <div *ngFor="let myNote of myNotes$ | async">
       <a routerLink="/content/{{ myNote.id }}">
