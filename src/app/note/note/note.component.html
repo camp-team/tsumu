@@ -10,7 +10,7 @@
             <mat-label>todo</mat-label>
           </textarea>
           <mat-error *ngIf="todoControl.hasError('required')">テキストを入力してください</mat-error>
-          <mat-error *ngIf="todoControl.hasError('maxlength')">最大文字数を超えています</mat-error>
+          <mat-error *ngIf="todoControl.hasError('maxlength')">1000文字以内で入力してください</mat-error>
         </mat-form-field>
         <p class="form__stringCount" id="todo">0/1000文字</p>
       </div>
@@ -24,7 +24,7 @@
             <mat-label>done</mat-label>
           </textarea>
           <mat-error *ngIf="doneControl.hasError('required')">テキストを入力してください</mat-error>
-          <mat-error *ngIf="doneControl.hasError('maxlength')">最大文字数を超えています</mat-error>
+          <mat-error *ngIf="doneControl.hasError('maxlength')">1000文字以内で入力してください</mat-error>
         </mat-form-field>
         <p class="form__stringCount" id="done">0/1000文字</p>
       </div>
@@ -38,7 +38,7 @@
             <mat-label>log</mat-label>
           </textarea>
           <mat-error *ngIf="logControl.hasError('required')">テキストを入力してください</mat-error>
-          <mat-error *ngIf="logControl.hasError('maxlength')">最大文字数を超えています</mat-error>
+          <mat-error *ngIf="logControl.hasError('maxlength')">1000文字以内で入力してください</mat-error>
         </mat-form-field>
         <p class="form__stringCount" id="log">0/1000文字</p>
       </div>
