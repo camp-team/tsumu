@@ -5,36 +5,42 @@
         <p class="form__title">今日やること</p>
         <mat-form-field class="form__area" appearance="outline">
           <textarea placeholder="今日やることを書き出してみましょう！" formControlName="todo" matInput autocomplete="off" required
-            matTextareaAutosize [matAutosizeMinRows]="3" [matAutosizeMaxRows]="10">
+            matTextareaAutosize [matAutosizeMinRows]="3" [matAutosizeMaxRows]="10"
+            onkeyup="document.getElementById('todo').innerHTML = this.value.length + '/1000文字';">
             <mat-label>todo</mat-label>
           </textarea>
           <mat-error *ngIf="todoControl.hasError('required')">テキストを入力してください</mat-error>
           <mat-error *ngIf="todoControl.hasError('maxlength')">最大文字数を超えています</mat-error>
         </mat-form-field>
+        <p class="form__stringCount" id="todo">0/1000文字</p>
       </div>
 
       <div class="form">
         <p>やったこと</p>
         <mat-form-field class="form__area" appearance="outline">
           <textarea placeholder="今日やったことは何ですか？" formControlName="done" matInput autocomplete="off" required
-            matTextareaAutosize [matAutosizeMinRows]="3" [matAutosizeMaxRows]="10">
+            matTextareaAutosize [matAutosizeMinRows]="3" [matAutosizeMaxRows]="10"
+            onkeyup="document.getElementById('done').innerHTML = this.value.length + '/1000文字';">
             <mat-label>done</mat-label>
           </textarea>
           <mat-error *ngIf="doneControl.hasError('required')">テキストを入力してください</mat-error>
           <mat-error *ngIf="doneControl.hasError('maxlength')">最大文字数を超えています</mat-error>
         </mat-form-field>
+        <p class="form__stringCount" id="done">0/1000文字</p>
       </div>
 
       <div class="form">
         <p>今日のつみあげ</p>
         <mat-form-field class="form__area" appearance="outline">
           <textarea placeholder="今日の学びで気づいたこと、感じたことをメモしましょう！" formControlName="log" matInput autocomplete="off" required
-            matTextareaAutosize [matAutosizeMinRows]="3" [matAutosizeMaxRows]="10">
+            matTextareaAutosize [matAutosizeMinRows]="3" [matAutosizeMaxRows]="10"
+            onkeyup="document.getElementById('log').innerHTML = this.value.length + '/1000文字';">
             <mat-label>log</mat-label>
           </textarea>
           <mat-error *ngIf="logControl.hasError('required')">テキストを入力してください</mat-error>
           <mat-error *ngIf="logControl.hasError('maxlength')">最大文字数を超えています</mat-error>
         </mat-form-field>
+        <p class="form__stringCount" id="log">0/1000文字</p>
       </div>
       <button class="button" type="submit" [disabled]="form.invalid" mat-flat-button color="primary">
         完了！

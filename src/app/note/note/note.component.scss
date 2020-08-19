@@ -9,12 +9,18 @@
 .form {
   display: block;
   width: 100%;
+  position: relative;
   &__title {
     display: block;
-    padding-bottom: 12px;
   }
   &__area {
     width: 100%;
+  }
+  &__stringCount {
+    position: absolute;
+    top: 144px;
+    right: 32px;
+    margin: 0;
   }
 }
 .button {
