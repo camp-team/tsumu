@@ -1,7 +1,9 @@
 <div class="container">
+  <h1 class="title">学習中の内容を入力して、タグを絞り込むことができます。</h1>
+
   <form class="search">
     <input class="search__input" [formControl]="inputTagFilter" type="text" matInput autocomplete="off"
-      placeholder="ジャンルを入力してください">
+      placeholder="Angular, Firebase">
     <button class="search__button">
       <mat-icon>search</mat-icon>
     </button>
@@ -14,6 +16,8 @@
       </mat-list-option>
     </mat-selection-list>
   </div>
+
+  <h2 class="user-list">ユーザー一覧</h2>
 
   <div class="grid">
     <app-user-card [user]="userItem" *ngFor="let userItem of userItems"></app-user-card>

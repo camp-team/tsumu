@@ -11,6 +11,7 @@ export const createUser = functions
   .firestore.document('users/{id}')
   .onCreate((snap) => {
     const data = snap.data();
+    console.log(data);
     return algolia.saveRecord({
       indexName: 'users',
       largeConcentKey: 'body',
