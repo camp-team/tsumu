@@ -20,7 +20,12 @@ export class SearchComponent implements OnInit {
   userItems = [];
   inputTagFilter: FormControl = new FormControl();
 
-  constructor(private searchService: SearchService, private router: Router, private title: Title, private meta: Meta) {
+  constructor(
+    private searchService: SearchService,
+    private router: Router,
+    private title: Title,
+    private meta: Meta
+  ) {
     this.buildTags('');
     this.search();
     this.title.setTitle('ユーザー検索ページ | TSUMU');
