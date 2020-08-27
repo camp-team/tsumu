@@ -1,30 +1,24 @@
 <div *ngIf="user$ | async as user">
-  <mat-list dense class="nav-list">
-    <mat-nav-list>
-      <a mat-list-item routerLinkActive="active" class="mat-list-item" routerLink="/note">
-        <mat-icon mat-list-icon>create</mat-icon>
-        <p class="mat-list-item__text">今日のつみあげ</p>
-      </a>
-      <a mat-list-item routerLinkActive="active" routerLink="/timeline">
-        <mat-icon mat-list-icon>timeline</mat-icon>
-        <p class="mat-list-item__text">タイムライン</p>
-      </a>
-      <a mat-list-item routerLinkActive="active" routerLink="/search">
-        <mat-icon mat-list-icon>search</mat-icon>
-        <p class="mat-list-item__text">ユーザー検索</p>
-      </a>
-      <a mat-list-item routerLinkActive="active" [routerLink]="['/mypage']" [queryParams]="{id: user.id}">
-        <mat-icon mat-list-icon>account_circle</mat-icon>
-        <p class="mat-list-item__text">マイページ</p>
-      </a>
-      <mat-divider></mat-divider>
-      <a mat-list-item routerLinkActive="active" routerLink="/settings" [queryParams]="{id: user.id}">
-        <mat-icon mat-list-icon>settings</mat-icon>
-        <p class="mat-list-item__text">設定</p>
-      </a>
-      <a class="terms" mat-list-item routerLink="/terms">
-        <p class="terms__text">利用規約</p>
-      </a>
-    </mat-nav-list>
-  </mat-list>
+  <mat-nav-list dense class="nav-list">
+    <a mat-list-item routerLinkActive="active" routerLink="/note">
+      <mat-icon mat-list-icon>create</mat-icon>
+      <p matLine>今日のつみあげ</p>
+    </a>
+    <a mat-list-item routerLinkActive="active" routerLink="/timeline">
+      <mat-icon mat-list-icon>timeline</mat-icon>
+      <p matLine>タイムライン</p>
+    </a>
+    <a mat-list-item routerLinkActive="active" routerLink="/search">
+      <mat-icon mat-list-icon>search</mat-icon>
+      <p matLine>ユーザー検索</p>
+    </a>
+    <a mat-list-item routerLinkActive="active" [routerLink]="['/mypage']" [queryParams]="{id: user.id}">
+      <mat-icon mat-list-icon>account_circle</mat-icon>
+      <p matLine>マイページ</p>
+    </a>
+    <mat-divider></mat-divider>
+    <a class="terms" mat-list-item routerLink="/terms">
+      利用規約
+    </a>
+  </mat-nav-list>
 </div>
