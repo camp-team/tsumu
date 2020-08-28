@@ -1,16 +1,8 @@
-.mat-list-item {
-  padding: 0 16px;
-  &__text {
-    margin-left: 16px;
-  }
-}
 .terms {
-  margin-top: 24px;
-  &__text {
-    color: rgba(black, .6);
-    padding-left: 44px;
-  }
+  color: rgba(black, .6);
 }
-.mat-nav-list a.active {
+
+.active {
   background: #F5F5F5;
 }
+
