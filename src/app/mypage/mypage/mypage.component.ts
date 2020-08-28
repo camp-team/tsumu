@@ -35,7 +35,7 @@ export class MypageComponent implements OnInit {
       const query = map.get('id');
       this.user$ = this.userService.getUser(query).pipe(
         tap(data => {
-          this.title.setTitle(`${data.name} | TSUMU`);
+          this.title.setTitle(`${data?.name} | TSUMU`);
           this.meta.addTags([
             { name: 'description', content: 'ユーザーの情報を表示させるマイページ' },
             { property: 'og:type', content: 'article' },
