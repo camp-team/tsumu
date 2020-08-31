@@ -84,4 +84,8 @@ export class NoteService {
       ref.where('authorId', '==', uid))
       .valueChanges();
   }
+
+  deleteNote(noteId: string): Promise<void> {
+    return this.db.doc(`notes/${noteId}`).delete();
+  }
 }

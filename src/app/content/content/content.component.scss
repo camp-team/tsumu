@@ -2,8 +2,16 @@
   max-width: 1024px;
   margin: 0 auto;
 }
-.date {
-  margin-left: 16px;
+.header {
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  &__spacer {
+    flex: 1;
+  }
+  &__date {
+    margin-left: 16px;
+  }
 }
 .section {
   margin: 8px;

@@ -31,9 +31,8 @@
   &__body p {
     max-height: 24px;
     font-weight: 500;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     overflow: hidden;
   }
 }
