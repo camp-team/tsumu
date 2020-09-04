@@ -11,11 +11,34 @@ import { Title, Meta } from '@angular/platform-browser';
 })
 export class NoteComponent implements OnInit {
   isComplete: boolean;
+  maxLength = 1000;
+
   form = this.fb.group({
-    todo: ['', [Validators.required, Validators.maxLength(1000)]],
-    done: ['', [Validators.required, Validators.maxLength(1000)]],
-    log: ['', [Validators.required, Validators.maxLength(1000)]],
+    todo: ['', [Validators.required, Validators.maxLength(this.maxLength)]],
+    done: ['', [Validators.required, Validators.maxLength(this.maxLength)]],
+    log: ['', [Validators.required, Validators.maxLength(this.maxLength)]],
   });
+
+  readonly ctrls = [
+    {
+      label: '今日やること',
+      name: 'todo',
+      placeholder: '今日やることを書き出してみましょう！',
+      control: this.todoControl
+    },
+    {
+      label: '今日やったこと',
+      name: 'done',
+      placeholder: '今日やったことは何ですか？',
+      control: this.doneControl
+    },
+    {
+      label: '今日の感想',
+      name: 'log',
+      placeholder: '今日の学びで気づいたこと、感じたことをメモしましょう！',
+      control: this.logControl
+    },
+  ];
 
   get todoControl() {
     return this.form.get('todo') as FormControl;
@@ -28,9 +51,6 @@ export class NoteComponent implements OnInit {
   get logControl() {
     return this.form.get('log') as FormControl;
   }
-
-  uid = this.authService.uid;
-
 
   constructor(
     private fb: FormBuilder,
@@ -63,8 +83,9 @@ export class NoteComponent implements OnInit {
       todo: this.form.value.todo,
       done: this.form.value.done,
       log: this.form.value.log,
-      authorId: this.uid,
+      authorId: this.authService.uid,
     });
     this.isComplete = true;
   }
 }
+

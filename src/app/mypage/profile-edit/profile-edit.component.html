@@ -4,14 +4,11 @@
   <form [formGroup]="form" (ngSubmit)="saveProfile()">
     <mat-dialog-content>
       <mat-form-field appearance="fill" class="main">
-        <div class="textarea">
-          <textarea matInput formControlName="bio" placeholder="自己紹介" autocomplete="off" required matTextareaAutosize
-            [matAutosizeMinRows]="3">
-          </textarea>
-        </div>
+        <textarea matInput formControlName="bio" placeholder="自己紹介" autocomplete="off" required matTextareaAutosize
+          [matAutosizeMinRows]="3">
+        </textarea>
       </mat-form-field>
       <mat-form-field class="chip-list">
-        <h2 matDialogTitle class="subtitle">学習のジャンル</h2>
         <mat-chip-list #chipList>
           <mat-chip *ngFor="let target of targets" [selectable]="selectable" [removable]="removable"
             (removed)="remove(target)">

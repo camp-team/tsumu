@@ -1,6 +1,12 @@
-<div class="content-container">
+<div class="content-container" *ngIf="user$ | async as user">
   <div *ngIf="note$ | async as note">
-    <p class="date">{{ note.createdAt.toDate() | date: "M月d日" }}</p>
+    <div class="header">
+      <p class="header__date">{{ note.createdAt.toDate() | date: "M月d日" }}</p>
+      <span class="header__spacer"></span>
+      <button *ngIf="user.id === note.authorId" mat-icon-button (click)="openDialog()">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
     <mat-card class="section">
       <p class="section__title">今日やること</p>
       <p>{{ note.todo }}</p>

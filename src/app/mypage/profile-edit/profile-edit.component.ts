@@ -57,6 +57,7 @@ export class ProfileEditComponent implements OnInit {
       this.form.patchValue({
         bio: bioAndGenres.bio,
       });
+      this.targets = bioAndGenres.genres;
     });
   }
 
