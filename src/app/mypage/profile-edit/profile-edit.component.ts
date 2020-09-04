@@ -46,8 +46,8 @@ export class ProfileEditComponent implements OnInit {
       // userをbioとgenresのみを持つデータに変換
       map(user => {
         const bioAndGenres = {
-          bio: user.bio,
-          genres: user.genres
+          bio: user?.bio,
+          genres: user?.genres
         };
         if (bioAndGenres) {
           return bioAndGenres;
